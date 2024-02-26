@@ -55,19 +55,19 @@ app.*.map.json
 # Files and directories created by pub
 .dart_tool/
 .packages
-build/
+# build/
 .idea/
-android/
-ios/
-linux/
-macros/
-macos/
-test/
-web/
-windows/
-.metadata
+# android/
+# ios/
+# linux/
+# macros/
+# macos/
+# test/
+# web/
+# windows/
+# .metadata
 .analysis_options.ymal
-analysis_options.ymal/
+a/nalysis_options.ymal/
 
 # If you're building an application, you may want to check-in your pubspec.lock
 pubspec.lock
