@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class FormContainerWidget extends StatefulWidget {
   final String? hintText;
@@ -13,17 +12,18 @@ class FormContainerWidget extends StatefulWidget {
   final ValueChanged<String>? onFieldSubmitted;
   final TextInputType? inputType;
 
-  const FormContainerWidget(
-      {this.hintText,
-      this.labelText,
-      this.helperText,
-      this.fieldKey,
-      this.isPassword,
-      this.controller,
-      this.onSaved,
-      this.validator,
-      this.onFieldSubmitted,
-      this.inputType});
+  const FormContainerWidget({
+    this.hintText,
+    this.labelText,
+    this.helperText,
+    this.fieldKey,
+    this.isPassword,
+    this.controller,
+    this.onSaved,
+    this.validator,
+    this.onFieldSubmitted,
+    this.inputType,
+  });
 
   @override
   _FormContainerWidgetState createState() => _FormContainerWidgetState();
@@ -36,12 +36,8 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.grey.withOpacity(.35),
-        borderRadius: BorderRadius.circular(15),
-      ),
       child: TextFormField(
-        style: TextStyle(color: Colors.red),
+        style: TextStyle(color: Color.fromARGB(255, 52, 7, 86)),
         controller: widget.controller,
         keyboardType: widget.inputType,
         key: widget.fieldKey,
@@ -50,10 +46,14 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
         validator: widget.validator,
         onFieldSubmitted: widget.onFieldSubmitted,
         decoration: InputDecoration(
-          border: InputBorder.none,
           filled: true,
+          fillColor: const Color.fromARGB(255, 209, 233, 243).withOpacity(.35),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide.none,
+          ),
           hintText: widget.hintText,
-          hintStyle: const TextStyle(color: Colors.black45),
+          hintStyle: TextStyle(color: Colors.black54),
           suffixIcon: GestureDetector(
             onTap: () {
               setState(() {
@@ -63,7 +63,9 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
             child: widget.isPassword == true
                 ? Icon(
                     _obscureText ? Icons.visibility_off : Icons.visibility,
-                    color: _obscureText == false ? Colors.blue : Colors.grey,
+                    color: _obscureText == false
+                        ? Color.fromARGB(255, 129, 139, 247)
+                        : Colors.grey,
                   )
                 : Text(' '),
           ),
