@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:katoria_jmt/features/user_auth/content/pages/signupPage.dart';
 import 'package:katoria_jmt/features/user_auth/content/widgets/form_container.dart';
-import 'package:katoria_jmt/features/user_auth/content/pages/homePage.dart'; //
+import 'package:katoria_jmt/features/user_auth/content/pages/homePage.dart'; 
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatelessWidget {
@@ -9,6 +10,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: GoogleFonts.podkovaTextTheme(),
       ),
@@ -45,7 +47,7 @@ class LoginPage extends StatelessWidget {
                   isPassword: true,
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 25,
                 ),
                 GestureDetector(
                   onTap: () {
@@ -70,6 +72,20 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
+                SizedBox(height:22),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Don't have an account?\t"),
+                    SizedBox(width: 20,),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SignupPage()));
+                      },
+                      child: Text("Sign up", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold))
+                    )
+                  ],
+                )
               ],
             ),
           ),
