@@ -3,16 +3,18 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:katoria_jmt/features/app/welcome_screen/welcomeScreen.dart';
 import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
 
-import 'fireAuthScreen.dart';
+import 'features/user_auth/firebase_auth/fireAuthService.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  try{
-  await Firebase.initializeApp();
-  }
-  catch (e){
-    print('Error initizialing Firebase: $e');
-  }
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: "AIzaSyBfrhUdkHCMnFNtM88B7JPaDNSFlTNEbz8",
+      appId: "1:695374748289:android:c1a038c0b095daa589cb80",
+      messagingSenderId: "695374748289",
+      projectId: "katoriajmt",
+    ),
+  );
   runApp(MainApp());
 }
 

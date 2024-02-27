@@ -1,10 +1,31 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:katoria_jmt/features/user_auth/content/pages/homePage.dart';
 import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
 import 'package:katoria_jmt/features/user_auth/content/widgets/form_container.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:katoria_jmt/features/user_auth/firebase_auth/fireAuthService.dart';
 
-class SignupPage extends StatelessWidget {
+class SignupPage extends StatefulWidget {
   const SignupPage({Key? key});
+
+  @override
+  State<SignupPage> createState() => _signupPageState();
+}
+
+class _signupPageState extends State<SignupPage>{
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  final AuthenticationService _auth = AuthenticationService();
+
+  void dispose(){
+    _usernameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +55,8 @@ class SignupPage extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                const FormContainerWidget(
+                FormContainerWidget(
+                  controller: _usernameController,
                   hintText: 'Username',
                   isPassword: false,
                 ),
@@ -42,7 +64,8 @@ class SignupPage extends StatelessWidget {
                   height: 10,
                 ),
 
-                const FormContainerWidget(
+                FormContainerWidget(
+                  controller: _emailController,
                   hintText: 'Email',
                   isPassword: false,
                 ),
@@ -50,14 +73,18 @@ class SignupPage extends StatelessWidget {
                   height: 10,
                 ),
 
-                const FormContainerWidget(
+                FormContainerWidget(
+                  controller: _passwordController,
                   hintText: 'Password',
                   isPassword: true,
                 ),
                 const SizedBox(
                   height: 25,
                 ),
-                Container(
+
+                GestureDetector(
+                  onTap:_signUp,
+                  child: Container(
                   width: double.infinity,
                   height: 50,
                   decoration: BoxDecoration(
@@ -75,6 +102,7 @@ class SignupPage extends StatelessWidget {
                     ),
                   ),
                 ),
+              ),
                 SizedBox(height:22),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -95,5 +123,21 @@ class SignupPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _signUp() async{
+    String username = _usernameController.text;
+    String email = _emailController.text;
+    String password = _passwordController.text;
+
+    User? user = await _auth.registerUser(email, password);
+    if(user !=  null){
+      print("Account created succesfully!");
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    }
+    else{
+      print("Error. Cannot register user.");
+    }
   }
 }
