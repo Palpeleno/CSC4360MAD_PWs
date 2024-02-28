@@ -29,7 +29,14 @@ migrate_working_dir/
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
-/build/
+/build/app
+/build/shared_preferences_android
+/build/path_provider_android
+/build/kolin
+/build/6c38642c3dd3dde1871985420bd973b3
+/build/cbff2b1535276d602df97b9656722b6e.cache.dill.track.dill
+/build/f4da31578bf74e160393d588ebd02ee2.cache.dill.track.dill
+
 
 
 
