@@ -122,7 +122,6 @@ class _SignupPageState extends State<SignupPage> {
     
     if (user != null) {
       _showSnackBar("Account created successfully");
-      
       Future.delayed(Duration(seconds :1), () {
         Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => HomePage()));
       });

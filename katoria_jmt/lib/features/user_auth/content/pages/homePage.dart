@@ -24,7 +24,9 @@ class HomePage extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 FirebaseAuth.instance.signOut();
-                Navigator.push(context, MaterialPageRoute(builder:(context) => LoginPage()));              },
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginPage()));
+              },
               child: Container(
                 width: 150,
                 height: 50,

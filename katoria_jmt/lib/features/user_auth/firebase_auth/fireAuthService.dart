@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/rendering.dart';
-
 
 class AuthenticationService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  bool _isLoading = false;
-
 
   Future<User?> registerUser(String email, String password) async {
   
@@ -29,6 +25,7 @@ class AuthenticationService {
       catch (e) {
         print("Error in user sign in process");
       }
+    return null;
   }
 
   Future<void> signOut() async {
