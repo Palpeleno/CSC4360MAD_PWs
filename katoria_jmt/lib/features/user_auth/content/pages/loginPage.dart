@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 // may need to change heading directory from pw1/ -> katoria_jmt/
@@ -5,9 +6,26 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pw1/features/user_auth/content/pages/signupPage.dart';
 import 'package:pw1/features/user_auth/content/widgets/form_container.dart';
 import 'package:pw1/features/user_auth/content/pages/homePage.dart';
+import 'package:pw1/features/user_auth/firebase_auth/fireAuthService.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  final AuthenticationService _auth = AuthenticationService();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,5 +120,28 @@ class LoginPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _signIn() async {
+    String email = _emailController.text;
+    String password = _passwordController.text;
+
+    User? user = await _auth.signInUser(email, password);
+
+    if (user != null) {
+      _showSnackBar("Signed in, welcome!");
+
+      Future.delayed(Duration(seconds: 1), () {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => HomePage()));
+      });
+    } else {
+      _showSnackBar("Incorrect credentials. Cannot sign in.");
+    }
+  }
+
+  void _showSnackBar(String message) {
+    final snackBar = SnackBar(content: Text(message));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

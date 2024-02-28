@@ -7,7 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:pw1/features/app/welcome_screen/welcomeScreen.dart';
 import 'package:pw1/features/user_auth/content/pages/loginPage.dart';
 
-import 'features/user_auth/firebase_auth/fireAuthService.dart';
+import 'package:pw1/features/user_auth/firebase_auth/fireAuthService.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

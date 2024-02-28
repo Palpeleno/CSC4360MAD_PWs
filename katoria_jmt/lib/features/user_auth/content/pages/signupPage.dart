@@ -11,16 +11,17 @@ import 'package:pw1/features/user_auth/firebase_auth/fireAuthService.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key});
-
+// TODO update proper created statefile for signup merge confict with back end homepage
   @override
-  State<SignupPage> createState() => _signupPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _signupPageState extends State<SignupPage> {
+class _SignupPageState extends State<SignupPage>  {
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   final AuthenticationService _auth = AuthenticationService();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void dispose() {
     _usernameController.dispose();
@@ -65,6 +66,7 @@ class _signupPageState extends State<SignupPage> {
                 const SizedBox(
                   height: 10,
                 ),
+
                 FormContainerWidget(
                   controller: _emailController,
                   hintText: 'Email',
@@ -73,6 +75,7 @@ class _signupPageState extends State<SignupPage> {
                 const SizedBox(
                   height: 10,
                 ),
+
                 FormContainerWidget(
                   controller: _passwordController,
                   hintText: 'Password',
@@ -81,46 +84,40 @@ class _signupPageState extends State<SignupPage> {
                 const SizedBox(
                   height: 25,
                 ),
+
                 GestureDetector(
-                  onTap: _signUp,
+                  onTap:_signUp,
                   child: Container(
-                    width: double.infinity,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 198, 221, 251),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        "Sign up",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
+                  width: double.infinity,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 198, 221, 251),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      "Sign up",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: 22),
+              ),
+                SizedBox(height:22),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Already have an account?\t"),
-                    SizedBox(
-                      width: 20,
-                    ),
+                    SizedBox(width: 20,),
                     GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginPage()));
-                        },
-                        child: Text("Log in",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold)))
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                      },
+                      child: Text("Log in", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold))
+                    )
                   ],
                 )
               ],
@@ -137,14 +134,18 @@ class _signupPageState extends State<SignupPage> {
     String password = _passwordController.text;
 
     User? user = await _auth.registerUser(email, password);
-    if (user != null) {
+    if(user !=  null){
       print("Account created succesfully!");
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => HomePage()),
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()),
       );
-    } else {
+    }
+    else{
       print("Error. Cannot register user.");
     }
+  }
+
+  void _showSnackBar(String message) {
+    final snackBar = SnackBar(content :Text(message));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
