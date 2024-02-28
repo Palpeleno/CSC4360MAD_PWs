@@ -24,9 +24,7 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Katoria Journal Mood Tracker',
-      home: WelcomeScreen(
-        child: LoginPage(),
-      ),
+      home: WelcomeScreen(),
     );
   }
 }

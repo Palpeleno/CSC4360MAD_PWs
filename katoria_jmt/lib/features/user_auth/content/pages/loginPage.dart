@@ -23,7 +23,7 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Welcome Back",
+                  "Welcome Back!",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.podkova(
                     textStyle: const TextStyle(
@@ -58,7 +58,7 @@ class LoginPage extends StatelessWidget {
                     height: 50,
                     decoration: BoxDecoration(
                       color: Color.fromARGB(255, 198, 221, 251),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                     child: const Center(
                       child: Text(

@@ -89,7 +89,7 @@ class _signupPageState extends State<SignupPage>{
                   height: 50,
                   decoration: BoxDecoration(
                     color: Color.fromARGB(255, 198, 221, 251),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(15),
                   ),
                   child: const Center(
                     child: Text(
