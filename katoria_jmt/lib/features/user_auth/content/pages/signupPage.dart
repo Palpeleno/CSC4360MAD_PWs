@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import 'package:katoria_jmt/features/user_auth/content/pages/homePage.dart';
-import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
-import 'package:katoria_jmt/features/user_auth/content/widgets/form_container.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:katoria_jmt/features/user_auth/firebase_auth/fireAuthService.dart';
+import 'package:flutter/material.dart';
+// may need to change heading directory from pw1/ -> katoria_jmt/
+// if there are future merger conflicts
+import 'package:pw1/features/user_auth/content/pages/homePage.dart';
+import 'package:pw1/features/user_auth/content/pages/loginPage.dart';
+import 'package:pw1/features/user_auth/content/widgets/form_container.dart';
+import 'package:pw1/features/user_auth/firebase_auth/fireAuthService.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key});
@@ -14,13 +16,13 @@ class SignupPage extends StatefulWidget {
   State<SignupPage> createState() => _signupPageState();
 }
 
-class _signupPageState extends State<SignupPage>{
+class _signupPageState extends State<SignupPage> {
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   final AuthenticationService _auth = AuthenticationService();
 
-  void dispose(){
+  void dispose() {
     _usernameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
@@ -63,7 +65,6 @@ class _signupPageState extends State<SignupPage>{
                 const SizedBox(
                   height: 10,
                 ),
-
                 FormContainerWidget(
                   controller: _emailController,
                   hintText: 'Email',
@@ -72,7 +73,6 @@ class _signupPageState extends State<SignupPage>{
                 const SizedBox(
                   height: 10,
                 ),
-
                 FormContainerWidget(
                   controller: _passwordController,
                   hintText: 'Password',
@@ -81,40 +81,46 @@ class _signupPageState extends State<SignupPage>{
                 const SizedBox(
                   height: 25,
                 ),
-
                 GestureDetector(
-                  onTap:_signUp,
+                  onTap: _signUp,
                   child: Container(
-                  width: double.infinity,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 198, 221, 251),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      "Sign up",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                    width: double.infinity,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 198, 221, 251),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        "Sign up",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-                SizedBox(height:22),
+                SizedBox(height: 22),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Already have an account?\t"),
-                    SizedBox(width: 20,),
+                    SizedBox(
+                      width: 20,
+                    ),
                     GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
-                      },
-                      child: Text("Log in", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold))
-                    )
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()));
+                        },
+                        child: Text("Log in",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold)))
                   ],
                 )
               ],
@@ -125,18 +131,19 @@ class _signupPageState extends State<SignupPage>{
     );
   }
 
-  void _signUp() async{
+  void _signUp() async {
     String username = _usernameController.text;
     String email = _emailController.text;
     String password = _passwordController.text;
 
     User? user = await _auth.registerUser(email, password);
-    if(user !=  null){
+    if (user != null) {
       print("Account created succesfully!");
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()),
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
       );
-    }
-    else{
+    } else {
       print("Error. Cannot register user.");
     }
   }

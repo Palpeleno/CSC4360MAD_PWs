@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
+// may need to change heading directory from pw1/ -> katoria_jmt/
+// if there are future merger conflicts
+import 'package:pw1/features/user_auth/content/pages/loginPage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -24,7 +26,9 @@ class HomePage extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 FirebaseAuth.instance.signOut();
-                Navigator.push(context, MaterialPageRoute(builder:(context) => LoginPage()));              },
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginPage()));
+              },
               child: Container(
                 width: 150,
                 height: 50,

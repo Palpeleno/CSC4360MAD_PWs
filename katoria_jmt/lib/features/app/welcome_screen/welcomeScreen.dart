@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
-import 'package:katoria_jmt/features/user_auth/content/pages/signupPage.dart';
+// may need to change heading directory from pw1/ -> katoria_jmt/
+// if there are future merger conflicts
+import 'package:pw1/features/user_auth/content/pages/loginPage.dart';
+import 'package:pw1/features/user_auth/content/pages/signupPage.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key});
@@ -11,7 +13,8 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateMixin {
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with TickerProviderStateMixin {
   late String _displayText;
   late int _index;
   late AnimationController _textAnimationController;
@@ -24,9 +27,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
   void initState() {
     _displayText = "";
     _index = 0;
-    _textAnimationController = AnimationController(vsync: this, duration: Duration(milliseconds: 30));
-    _loginButtonController = AnimationController(vsync: this, duration: Duration(milliseconds: 500));
-    _signupButtonController = AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+    _textAnimationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 30));
+    _loginButtonController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+    _signupButtonController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
 
     String _fullText = "Katoria\nJournal and Mood Tracker";
 
@@ -108,7 +114,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
                 FadeTransition(
                   opacity: _loginButtonController,
                   child: SlideTransition(
-                    position: Tween<Offset>(begin: Offset(-1, 0), end: Offset.zero).animate(_loginButtonController),
+                    position:
+                        Tween<Offset>(begin: Offset(-1, 0), end: Offset.zero)
+                            .animate(_loginButtonController),
                     child: buildAnimatedButton(
                       text: "Log in",
                       onPressed: () {
@@ -125,7 +133,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
                 FadeTransition(
                   opacity: _signupButtonController,
                   child: SlideTransition(
-                    position: Tween<Offset>(begin: Offset(1, 0), end: Offset.zero).animate(_signupButtonController),
+                    position:
+                        Tween<Offset>(begin: Offset(1, 0), end: Offset.zero)
+                            .animate(_signupButtonController),
                     child: buildAnimatedButton(
                       text: "Sign up",
                       onPressed: () {
@@ -144,7 +154,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
     );
   }
 
-  Widget buildAnimatedButton({required String text, required VoidCallback onPressed}) {
+  Widget buildAnimatedButton(
+      {required String text, required VoidCallback onPressed}) {
     return GestureDetector(
       onTap: onPressed,
       child: Container(

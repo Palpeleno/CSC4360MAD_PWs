@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:katoria_jmt/features/app/welcome_screen/welcomeScreen.dart';
-import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
+// may need to change heading directory from pw1/ -> katoria_jmt/
+// if there are future merger conflicts
+import 'package:pw1/features/app/welcome_screen/welcomeScreen.dart';
+import 'package:pw1/features/user_auth/content/pages/loginPage.dart';
 
 import 'features/user_auth/firebase_auth/fireAuthService.dart';
 

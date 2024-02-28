@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:katoria_jmt/features/user_auth/content/pages/signupPage.dart';
-import 'package:katoria_jmt/features/user_auth/content/widgets/form_container.dart';
-import 'package:katoria_jmt/features/user_auth/content/pages/homePage.dart'; 
 import 'package:google_fonts/google_fonts.dart';
+// may need to change heading directory from pw1/ -> katoria_jmt/
+// if there are future merger conflicts
+import 'package:pw1/features/user_auth/content/pages/signupPage.dart';
+import 'package:pw1/features/user_auth/content/widgets/form_container.dart';
+import 'package:pw1/features/user_auth/content/pages/homePage.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key});
@@ -51,7 +53,8 @@ class LoginPage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
                   },
                   child: Container(
                     width: double.infinity,
@@ -72,18 +75,25 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height:22),
+                SizedBox(height: 22),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Don't have an account?\t"),
-                    SizedBox(width: 20,),
+                    SizedBox(
+                      width: 20,
+                    ),
                     GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SignupPage()));
-                      },
-                      child: Text("Sign up", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold))
-                    )
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignupPage()));
+                        },
+                        child: Text("Sign up",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold)))
                   ],
                 )
               ],
