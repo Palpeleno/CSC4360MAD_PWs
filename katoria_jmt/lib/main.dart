@@ -29,14 +29,13 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Katoria Journal Mood Tracker',
       home: WelcomeScreen(),
-import './common/color_extension.dart';
-import './view/main_tab/main_tab_view.dart';
+
+
+// import 'package:pw1/common/color_extension.dart';
+// import './view/main_tab/main_tab_view.dart';
 // import './view/home/';
 // import './view/login';
 
-void main() {
-  runApp(const MyApp());
-}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
