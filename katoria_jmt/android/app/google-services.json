@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "695374748289",
+    "project_id": "katoriajmt",
+    "storage_bucket": "katoriajmt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695374748289:android:c1a038c0b095daa589cb80",
+        "android_client_info": {
+          "package_name": "com.example.katoria_jmt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfrhUdkHCMnFNtM88B7JPaDNSFlTNEbz8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
