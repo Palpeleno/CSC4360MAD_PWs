@@ -35,6 +35,7 @@ class _LoginPageState extends State<LoginPage> {
         textTheme: GoogleFonts.podkovaTextTheme(),
       ),
       home: Scaffold(
+        // TODO add color to class
         backgroundColor: const Color.fromARGB(255, 246, 251, 245),
         body: Center(
           child: Padding(
@@ -71,13 +72,17 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(context,
+                    Navigator.push(
+                        context,
+                        // fix import to go to maintab page instead of home page {kush}
                         MaterialPageRoute(builder: (context) => HomePage()));
                   },
                   child: Container(
                     width: double.infinity,
                     height: 50,
                     decoration: BoxDecoration(
+                      // TODO add color to class
+
                       color: Color.fromARGB(255, 198, 221, 251),
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -110,6 +115,8 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         child: Text("Sign up",
                             style: TextStyle(
+                                // TODO add color to class
+
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold)))
                   ],

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 // may need to change heading directory from pw1/ -> katoria_jmt/
 // if there are future merger conflicts
 import 'package:pw1/features/user_auth/content/pages/loginPage.dart';
+import 'package:pw1/view/main_tab/main_tab_view.dart';
 
+// TODO merge Maintab here as home page
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -33,6 +35,8 @@ class HomePage extends StatelessWidget {
                 width: 150,
                 height: 50,
                 decoration: BoxDecoration(
+                  // TODO add color to class
+
                   color: Color.fromARGB(255, 198, 221, 251),
                   borderRadius: BorderRadius.circular(15),
                 ),

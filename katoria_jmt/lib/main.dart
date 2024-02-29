@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 import 'package:pw1/common/color_extension.dart';
 // may need to change heading directory from pw1/ -> katoria_jmt/
 // if there are future merger conflicts
@@ -45,11 +46,6 @@ class MainApp extends StatelessWidget {
       // ),
       // home: MainTabView(),
       home: WelcomeScreen(),
-
-// import 'package:pw1/common/color_extension.dart';
-// import './view/main_tab/main_tab_view.dart';
-// import './view/home/';
-// import './view/login';
     );
   }
 }
