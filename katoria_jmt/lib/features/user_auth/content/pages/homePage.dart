@@ -1,11 +1,14 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:katoria_jmt/common/color_extension.dart';
 // may need to change heading directory from pw1/ -> katoria_jmt/
 // if there are future merger conflicts
-import 'package:pw1/features/user_auth/content/pages/loginPage.dart';
-import 'package:pw1/view/main_tab/main_tab_view.dart';
+import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
+import 'package:katoria_jmt/view/main_tab/main_tab_view.dart';
 
-// TODO merge Maintab here as home page
+// TODO merge Maintabview here as home page
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -13,46 +16,50 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Home page content in this file c:",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 50),
-            GestureDetector(
-              onTap: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LoginPage()));
-              },
-              child: Container(
-                width: 150,
-                height: 50,
-                decoration: BoxDecoration(
-                  // TODO add color to class
-
-                  color: Color.fromARGB(255, 198, 221, 251),
-                  borderRadius: BorderRadius.circular(15),
+        child: Padding(
+          padding: EdgeInsets.symmetric(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // filler heading
+              Text(
+                "Home page content in this file c:",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
                 ),
-                child: Center(
-                  child: Text(
-                    "Sign out",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
+              ),
+              // SizedBox(height: 50),
+              GestureDetector(
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginPage()));
+                },
+                child: Container(
+                  width: 150,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    // TODO add color to class
+
+                    color: TColor.primaryAlpha,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Sign out",
+                      style: TextStyle(
+                        color: TColor.tertiaryText,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:katoria_jmt/common/color_extension.dart';
 // may need to change heading directory from pw1/ -> katoria_jmt/
 // if there are future merger conflicts
-import 'package:pw1/features/user_auth/content/pages/signupPage.dart';
-import 'package:pw1/features/user_auth/content/widgets/form_container.dart';
-import 'package:pw1/features/user_auth/content/pages/homePage.dart';
-import 'package:pw1/features/user_auth/firebase_auth/fireAuthService.dart';
+import 'package:katoria_jmt/features/user_auth/content/pages/signupPage.dart';
+import 'package:katoria_jmt/features/user_auth/content/widgets/form_container.dart';
+import 'package:katoria_jmt/features/user_auth/content/pages/homePage.dart';
+import 'package:katoria_jmt/features/user_auth/firebase_auth/fireAuthService.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key});
@@ -36,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
       home: Scaffold(
         // TODO add color to class
-        backgroundColor: const Color.fromARGB(255, 246, 251, 245),
+        backgroundColor: TColor.primary,
         body: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -83,15 +84,14 @@ class _LoginPageState extends State<LoginPage> {
                     height: 50,
                     decoration: BoxDecoration(
                       // TODO add color to class
-
-                      color: Color.fromARGB(255, 198, 221, 251),
+                      color: TColor.primaryBeta,
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         "Log in",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: TColor.tertiaryText,
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         ),
@@ -117,8 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Text("Sign up",
                             style: TextStyle(
                                 // TODO add color to class
-
-                                color: Colors.black,
+                                color: TColor.tertiaryText,
                                 fontWeight: FontWeight.bold)))
                   ],
                 )

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:katoria_jmt/common/color_extension.dart';
 // may need to change heading directory from pw1/ -> katoria_jmt/
 // if there are future merger conflicts
-import 'package:pw1/features/user_auth/content/pages/loginPage.dart';
-import 'package:pw1/features/user_auth/content/pages/signupPage.dart';
+import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
+import 'package:katoria_jmt/features/user_auth/content/pages/signupPage.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key});
@@ -89,7 +90,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         textTheme: GoogleFonts.podkovaTextTheme(),
       ),
       home: Scaffold(
-        backgroundColor: Color.fromARGB(255, 246, 251, 245),
+        backgroundColor: TColor.primary,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -162,14 +163,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         width: 150,
         height: 50,
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 207, 225, 251),
+          color: TColor.primaryBeta,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Center(
           child: Text(
             text,
             style: TextStyle(
-              color: Colors.black,
+              color: TColor.tertiaryText,
               fontWeight: FontWeight.bold,
               fontSize: 21,
             ),
