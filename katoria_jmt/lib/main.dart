@@ -2,12 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:pw1/common/color_extension.dart';
 // may need to change heading directory from pw1/ -> katoria_jmt/
 // if there are future merger conflicts
 import 'package:pw1/features/app/welcome_screen/welcomeScreen.dart';
 import 'package:pw1/features/user_auth/content/pages/loginPage.dart';
 
 import 'package:pw1/features/user_auth/firebase_auth/fireAuthService.dart';
+import 'package:pw1/view/main_tab/main_tab_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,41 +25,31 @@ void main() async {
 }
 
 class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Katoria Journal Mood Tracker',
-      home: WelcomeScreen(),
-
+      // This is the theme of your application.
+      // TODO color extensions and fonts refractor to proper colore schema
+      // theme: ThemeData(
+      //   colorScheme: ColorScheme.fromSeed(
+      //       seedColor: TColor.base,
+      //       background: TColor.baseAlpha,
+      //       primary: TColor.primary,
+      //       primaryContainer: TColor.primaryAlpha,
+      //       secondary: TColor.secondary),
+      //   useMaterial3: false,
+      // ),
+      home: MainTabView(),
+      // home: WelcomeScreen(),
 
 // import 'package:pw1/common/color_extension.dart';
 // import './view/main_tab/main_tab_view.dart';
 // import './view/home/';
 // import './view/login';
-
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'JMT',
-      debugShowCheckedModeBanner: false,
-      // This is the theme of your application.
-      // TODO color extensions and fonts refractor to proper colore schema
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: TColor.base,
-            background: TColor.baseAlpha,
-            primary: TColor.primary,
-            primaryContainer: TColor.primaryAlpha,
-            secondary: TColor.secondary),
-        useMaterial3: false,
-      ),
-      home: const MainTabView(),
     );
   }
 }
