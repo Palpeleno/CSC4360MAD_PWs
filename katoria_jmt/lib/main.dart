@@ -43,8 +43,8 @@ class MainApp extends StatelessWidget {
       //       secondary: TColor.secondary),
       //   useMaterial3: false,
       // ),
-      home: MainTabView(),
-      // home: WelcomeScreen(),
+      // home: MainTabView(),
+      home: WelcomeScreen(),
 
 // import 'package:pw1/common/color_extension.dart';
 // import './view/main_tab/main_tab_view.dart';
