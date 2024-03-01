@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
 import 'package:katoria_jmt/view/home/newpage_view.dart';
 import 'package:katoria_jmt/view/home/jounral_entries.dart';
 import 'package:katoria_jmt/view/home/profile_view.dart';
@@ -32,7 +35,7 @@ class _MainTabViewState extends State<MainTabView> {
               children: [
                 const Spacer(),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 60),
+                  padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
@@ -126,6 +129,11 @@ class _MainTabViewState extends State<MainTabView> {
                             IconButton(
                               padding: EdgeInsets.symmetric(horizontal: 40),
                               onPressed: () {
+                                FirebaseAuth.instance.signOut();
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => LoginPage()),
+                                );
                                 setState(() {
                                   selectTab = 4;
                                   currentTabView = Container();

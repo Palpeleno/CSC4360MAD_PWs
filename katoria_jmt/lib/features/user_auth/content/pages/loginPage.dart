@@ -6,8 +6,9 @@ import 'package:katoria_jmt/common/color_extension.dart';
 // if there are future merger conflicts
 import 'package:katoria_jmt/features/user_auth/content/pages/signupPage.dart';
 import 'package:katoria_jmt/features/user_auth/content/widgets/form_container.dart';
-import 'package:katoria_jmt/features/user_auth/content/pages/homePage.dart';
 import 'package:katoria_jmt/features/user_auth/firebase_auth/fireAuthService.dart';
+import 'package:katoria_jmt/view/main_tab/main_tab_view.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key});
@@ -73,11 +74,11 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
+                    Navigator.pushAndRemoveUntil(
                         context,
-                        // TODO
-                        // fix import to go to maintab page instead of home page {kush}
-                        MaterialPageRoute(builder: (context) => HomePage()));
+                        MaterialPageRoute(builder: (context) => MainTabView()),
+                        (route) => false,  
+                      );
                   },
                   child: Container(
                     width: double.infinity,
@@ -139,8 +140,10 @@ class _LoginPageState extends State<LoginPage> {
       _showSnackBar("Signed in, welcome!");
 
       Future.delayed(Duration(seconds: 1), () {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
+        Navigator.pushAndRemoveUntil(
+            context, MaterialPageRoute(builder: (context) => MainTabView()),
+            (route) => false,
+          );
       });
     } else {
       _showSnackBar("Incorrect credentials. Cannot sign in.");
