@@ -6,7 +6,7 @@
 build/
 
 # .idea/
-# android/
+android/
 # ios/
 # linux/
 # macros/
@@ -73,6 +73,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 # /build/
+android/
 
 # Symbolication related
 app.*.symbols
@@ -99,12 +100,12 @@ app.*.map.json
 .dart_tool/
 .packages
 .idea/
-# linux/
+linux/
 # macros/
-# macos/
+macos/
 # test/
 # web/
-# windows/
+windows/
 .metadata
 .analysis_options.ymal
 analysis_options.ymal/
