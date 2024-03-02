@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:pw1/view/home/newpage_view.dart';
-import 'package:pw1/view/home/jounral_entries.dart';
-import 'package:pw1/view/home/profile_view.dart';
-import 'package:pw1/view/home/settings_view.dart';
-import '../../common/color_extension.dart';
+import 'package:katoria_jmt/view/home/newpage_view.dart';
+import 'package:katoria_jmt/view/home/jounral_entries.dart';
+import 'package:katoria_jmt/view/home/profile_view.dart';
+import 'package:katoria_jmt/view/home/settings_view.dart';
+import 'package:katoria_jmt/common/color_extension.dart';
 
 class MainTabView extends StatefulWidget {
   const MainTabView({super.key});
@@ -22,7 +22,7 @@ class _MainTabViewState extends State<MainTabView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: TColor.base,
+      backgroundColor: TColor.primary,
       body: Stack(
         children: [
           // TODO there might be issue with making subsequent pages so come back here for that
@@ -55,7 +55,7 @@ class _MainTabViewState extends State<MainTabView> {
                               icon: Icon(
                                 Icons.settings,
                                 size: 40.0,
-                                color: TColor.white,
+                                color: TColor.tertiaryText,
                               ),
                             ),
                             // SizedBox(width: 40.0),
