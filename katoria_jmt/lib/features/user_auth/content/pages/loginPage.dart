@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,7 +10,6 @@ import 'package:katoria_jmt/features/user_auth/content/pages/signupPage.dart';
 import 'package:katoria_jmt/features/user_auth/content/widgets/form_container.dart';
 import 'package:katoria_jmt/features/user_auth/firebase_auth/fireAuthService.dart';
 import 'package:katoria_jmt/view/main_tab/main_tab_view.dart';
-
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key});
@@ -75,10 +76,10 @@ class _LoginPageState extends State<LoginPage> {
                 GestureDetector(
                   onTap: () {
                     Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => MainTabView()),
-                        (route) => false,  
-                      );
+                      context,
+                      MaterialPageRoute(builder: (context) => MainTabView()),
+                      (route) => false,
+                    );
                   },
                   child: Container(
                     width: double.infinity,
@@ -141,9 +142,10 @@ class _LoginPageState extends State<LoginPage> {
 
       Future.delayed(Duration(seconds: 1), () {
         Navigator.pushAndRemoveUntil(
-            context, MaterialPageRoute(builder: (context) => MainTabView()),
-            (route) => false,
-          );
+          context,
+          MaterialPageRoute(builder: (context) => MainTabView()),
+          (route) => false,
+        );
       });
     } else {
       _showSnackBar("Incorrect credentials. Cannot sign in.");

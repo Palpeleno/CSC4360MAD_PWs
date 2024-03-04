@@ -127,13 +127,13 @@ class _MainTabViewState extends State<MainTabView> {
                             // instead of a new page make a banner pop up reguardless,
                             // of page to prompt a logout opportunity
                             IconButton(
-                              
                               padding: EdgeInsets.symmetric(horizontal: 40),
                               onPressed: () {
                                 FirebaseAuth.instance.signOut();
                                 Navigator.pushReplacement(
                                   context,
-                                  MaterialPageRoute(builder: (context) => LoginPage()),
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginPage()),
                                 );
                                 setState(() {
                                   selectTab = 4;
@@ -146,7 +146,6 @@ class _MainTabViewState extends State<MainTabView> {
                                 size: 40.0,
                                 color: TColor.white,
                               ),
-                              
                             ),
                           ], // icon button children
                         ),
