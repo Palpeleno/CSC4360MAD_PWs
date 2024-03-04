@@ -1,14 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:katoria_jmt/common/color_extension.dart';
 // may need to change heading directory from pw1/ -> katoria_jmt/
 // if there are future merger conflicts
-import 'package:katoria_jmt/features/user_auth/content/pages/homePage.dart';
 import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
 import 'package:katoria_jmt/features/user_auth/content/widgets/form_container.dart';
 import 'package:katoria_jmt/features/user_auth/firebase_auth/fireAuthService.dart';
+import 'package:katoria_jmt/view/main_tab/main_tab_view.dart';
+
 
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key});
@@ -143,15 +143,15 @@ class _SignupPageState extends State<SignupPage> {
     User? user = await _auth.registerUser(email, password);
     if (user != null) {
       print("Account created succesfully!");
-      Navigator.pushReplacement(
+      Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => HomePage()),
+        MaterialPageRoute(builder: (context) => MainTabView()),
+        (route) => false,
       );
     } else {
       print("Error. Cannot register user.");
     }
   }
-
   void _showSnackBar(String message) {
     final snackBar = SnackBar(content: Text(message));
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
