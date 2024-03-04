@@ -2,12 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 import 'package:katoria_jmt/common/color_extension.dart';
+
 // may need to change heading directory from pw1/ -> katoria_jmt/
 // if there are future merger conflicts
 import 'package:katoria_jmt/features/app/welcome_screen/welcomeScreen.dart';
-
 import 'package:katoria_jmt/features/user_auth/firebase_auth/fireAuthService.dart';
 
 void main() async {
