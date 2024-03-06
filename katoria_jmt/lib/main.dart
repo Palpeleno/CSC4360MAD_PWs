@@ -11,7 +11,6 @@ import 'package:katoria_jmt/features/themes/theme.dart';
 import 'package:katoria_jmt/features/themes/themeProvider.dart';
 // ignore: unused_import
 import 'package:katoria_jmt/features/user_auth/firebase_auth/fireAuthService.dart';
-import 'package:katoria_jmt/view/home/journal_entries.dart';
 import 'package:katoria_jmt/view/home/main_tab_view.dart';
 import 'package:provider/provider.dart';
 

@@ -1,10 +1,17 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:katoria_jmt/db/database_provider.dart';
+import 'package:katoria_jmt/view/home/journal_entries.dart';
+import 'package:katoria_jmt/view/home/main_tab_view.dart';
+import 'package:katoria_jmt/view/model/page_model.dart';
 // import '../../common/color_extension.dart';
+import '../../db/database_provider.dart';
 
 class AddPage extends StatefulWidget {
-  AddPage({super.key});
+  final PageModel? page;
+
+  AddPage({Key? key, this.page}) : super(key: key);
 
   @override
   _AddPageState createState() => _AddPageState();
@@ -13,6 +20,22 @@ class AddPage extends StatefulWidget {
 class _AddPageState extends State<AddPage> {
   // defualt mood
   int selectedMood = 5;
+
+  late String title;
+  late String body;
+  late String mood;
+  late DateTime date;
+
+// input controller
+  TextEditingController titleController = TextEditingController();
+  TextEditingController bodyController = TextEditingController();
+
+  addPage(PageModel page) {
+    DatabaseProvider.db.addNewPage(page);
+    // ignore: avoid_print
+    print("page added succesfully");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,17 +47,17 @@ class _AddPageState extends State<AddPage> {
         child: Column(
           children: [
             TextField(
+              controller: titleController,
               decoration: InputDecoration(
                   border: InputBorder.none, hintText: "Note Title"),
               style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
             ),
             // mood selection
             Container(
-              margin: EdgeInsets.symmetric(vertical: 16.0),
+              margin: EdgeInsets.symmetric(vertical: 6.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: List.generate(10, (index) {
-                  Text("test area for mood");
                   return IconButton(
                     onPressed: () {
                       setState(() {
@@ -55,6 +78,7 @@ class _AddPageState extends State<AddPage> {
             ),
             Expanded(
               child: TextField(
+                controller: bodyController,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
                 decoration: InputDecoration(
@@ -68,7 +92,25 @@ class _AddPageState extends State<AddPage> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          setState(() {});
+          setState(() {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => MainTabView()));
+            title = titleController.text;
+            body = bodyController.text;
+
+            mood = selectedMood.toString();
+
+            date = DateTime.now();
+
+            PageModel page = PageModel(
+              // id: index,
+              title: title,
+              body: body,
+              mood: mood,
+              creation_date: date,
+            );
+            addPage(page);
+          });
         },
         label: Text("Save Page"),
         icon: Icon(Icons.save),

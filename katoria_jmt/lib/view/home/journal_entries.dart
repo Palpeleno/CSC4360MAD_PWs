@@ -6,6 +6,7 @@ import 'package:katoria_jmt/common/color_extension.dart';
 import 'package:katoria_jmt/db/database_provider.dart';
 import 'package:katoria_jmt/view/home/addnewpage_view.dart';
 import 'package:katoria_jmt/view/model/page_model.dart';
+import 'package:path/path.dart';
 // import 'package:sqflite/sqflite.dart';
 
 class JounralView extends StatefulWidget {
@@ -26,10 +27,13 @@ class _JounralViewState extends State<JounralView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Journal Pages"),
-        // backgroundColor: Theme.of(context).colorScheme.onBackground,
+        title: const Text(
+          "Journal Pages",
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Theme.of(context).colorScheme.onBackground,
       ),
-      // backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: FutureBuilder<List<PageModel>>(
         future: getPages(),
         builder: (context, pageData) {
