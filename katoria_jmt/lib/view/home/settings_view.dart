@@ -20,10 +20,10 @@ class SettingsView extends StatelessWidget {
               title: Text(
                 "Settings",
                 style: TextStyle(
-                    // color: Theme.of(context).colorScheme.onSurface,
-                    ),
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
               ),
-              // backgroundColor: Theme.of(context).colorScheme.onBackground,
+              backgroundColor: Theme.of(context).colorScheme.onBackground,
             ),
             backgroundColor: Theme.of(context).colorScheme.background,
             body: Padding(

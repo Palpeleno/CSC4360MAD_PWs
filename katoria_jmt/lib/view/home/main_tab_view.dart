@@ -25,7 +25,7 @@ class _MainTabViewState extends State<MainTabView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: TColor.primary,
+      // backgroundColor: Theme.of(context).colorScheme.background,
       body: Stack(
         children: [
           // TODO there might be issue with making subsequent persistant pages so come back here for that
@@ -44,7 +44,6 @@ class _MainTabViewState extends State<MainTabView> {
                   buildTabIconButton(
                       Icons.person_4_outlined, UserProfileView(), 2),
                   buildTabIconButton(Icons.book_outlined, JounralView(), 3),
-                  // buildTabIconButton(Icons.add_comment_outlined, AddPage(), 0),
                   buildTabIconButton(Icons.logout_rounded, Container(), 4),
                 ],
               ),
@@ -59,6 +58,12 @@ class _MainTabViewState extends State<MainTabView> {
     return IconButton(
       padding: EdgeInsets.symmetric(horizontal: 40),
       onPressed: () {
+        // if (tabIndex == 1) {
+        //   setState(() {
+        //     selectTab = 1;
+        //     currentTabView = SettingsView();
+        //   });
+        // }
         if (tabIndex == 4) {
           // TODO correct function for logoutconfirmation
           showLogoutConfirmationDialog(context);
@@ -84,6 +89,10 @@ class _MainTabViewState extends State<MainTabView> {
                 const begin = Offset(1.0, 0.0);
                 const end = Offset.zero;
                 const curve = Curves.easeInOut;
+                if (tabView is SettingsView) {
+                  // omit animation to settings
+                  return child;
+                }
                 var tween = Tween(begin: begin, end: end)
                     .chain(CurveTween(curve: curve));
                 var offsetAnimation = animation.drive(tween);
