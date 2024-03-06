@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:katoria_jmt/common/color_extension.dart';
 
+
 ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
     colorScheme: ColorScheme.light(
@@ -22,6 +23,6 @@ ThemeData darkMode = ThemeData(
     secondary: Color.fromARGB(255, 3, 55, 11),
     onBackground: Colors.black,
     onSurface: TColor.primaryText,
-    
+
   )
 );
