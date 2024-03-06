@@ -20,7 +20,7 @@ class _AddPageState extends State<AddPage> {
         title: Text("Add new page"),
       ),
       body: Padding(
-        // padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12 / .0),
+        padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
         child: Column(
           children: [
             TextField(
