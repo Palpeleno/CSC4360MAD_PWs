@@ -10,13 +10,15 @@ class UserProfileView extends StatefulWidget {
 }
 
 class _UserProfileViewState extends State<UserProfileView> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("User profile"),
+        backgroundColor: Theme.of(context).colorScheme.onBackground,
       ),
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Text(''),
     );
   }
