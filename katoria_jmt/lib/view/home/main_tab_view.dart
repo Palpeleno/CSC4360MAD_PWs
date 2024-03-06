@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
+import 'package:katoria_jmt/features/app/welcome_screen/welcomeScreen.dart';
 import 'package:katoria_jmt/view/home/addnewpage_view.dart';
 import 'package:katoria_jmt/view/home/jounral_entries.dart';
 import 'package:katoria_jmt/view/home/profile_view.dart';
@@ -51,136 +50,6 @@ class _MainTabViewState extends State<MainTabView> {
               ),
             ),
           ),
-
-          // SafeArea(
-          //   child: Column(
-          //     children: [
-          //       const Spacer(),
-          //       Padding(
-          //         padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-          //         child: Stack(
-          //           alignment: Alignment.center,
-          //           children: [
-          //             Image.asset("assets/img/backgroundUtilNavigationbar.png"),
-          //             SingleChildScrollView(
-          //               child: Row(
-          //                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //                 children: [
-          //                   IconButton(
-          //                     padding: EdgeInsets.symmetric(horizontal: 40),
-          //                     onPressed: () {
-          //                       setState(() {
-          //                         selectTab = 1;
-          //                         currentTabView = SettingsView();
-          //                       });
-          //                     },
-          //                     tooltip: 'settings',
-          //                     icon: Icon(
-          //                       Icons.settings,
-          //                       size: 40.0,
-          //                       color: TColor.tertiaryText,
-          //                     ),
-          //                   ),
-          //                   // SizedBox(width: 40.0),
-          //                   IconButton(
-          //                     padding: EdgeInsets.symmetric(horizontal: 40),
-          //                     onPressed: () {
-          //                       setState(() {
-          //                         selectTab = 2;
-          //                         currentTabView = UserProfileView();
-          //                       });
-          //                     },
-          //                     tooltip: 'profile',
-          //                     icon: Icon(
-          //                       Icons.person_4_outlined,
-          //                       size: 40.0,
-          //                       color: TColor.white,
-          //                     ),
-          //                   ),
-          //                   // SizedBox(width: 40.0),
-          //                   IconButton(
-          //                     padding: EdgeInsets.symmetric(horizontal: 40),
-          //                     onPressed: () {
-          //                       setState(() {
-          //                         selectTab = 3;
-          //                         currentTabView = JounralView();
-          //                       });
-          //                     },
-          //                     tooltip: 'Journals',
-          //                     icon: Icon(
-          //                       Icons.book_outlined,
-          //                       size: 40.0,
-          //                       color: TColor.white,
-          //                     ),
-          //                   ),
-          //                   // TODO fix redirect for jounral page view
-          //                   IconButton(
-          //                     padding: EdgeInsets.symmetric(horizontal: 40),
-          //                     onPressed: () {
-          //                       setState(() {
-          //                         selectTab = 0;
-          //                         var key;
-          //                         currentTabView = AddPage(
-          //                         );
-          //                       });
-          //                     },
-          //                     tooltip: 'new page',
-          //                     icon: Icon(
-          //                       Icons.add_comment_outlined,
-          //                       size: 40.0,
-          //                       color: TColor.white,
-          //                     ),
-          //                   ),
-          //                   // temp button funtion
-          //                   // IconButton(
-          //                   //   padding: EdgeInsets.symmetric(horizontal: 40),
-          //                   //   onPressed: () {
-          //                   //     setState(() {
-          //                   //       selectTab = 3;
-          //                   //       currentTabView = Container();
-          //                   //     });
-          //                   //   },
-          //                   //   tooltip: 'dark mode/light mode',
-          //                   //   icon: Icon(
-          //                   //     Icons.dark_mode_outlined,
-          //                   //     size: 40.0,
-          //                   //     color: TColor.white,
-          //                   //   ),
-          //                   // ),
-          //                   // instead of a new page make a banner pop up reguardless,
-          //                   // of page to prompt a logout opportunity
-          //                   IconButton(
-          //                     padding: EdgeInsets.symmetric(horizontal: 40),
-          //                     onPressed: () {
-          //                       // TODO check logout void functions redirect to login screen functionality
-          //                       // showLogoutConfirmationDialog(context);
-          //                       FirebaseAuth.instance.signOut();
-          //                       Navigator.pushReplacement(
-          //                         context,
-          //                         MaterialPageRoute(
-          //                             builder: (context) => LoginPage()),
-          //                       );
-          //                       setState(() {
-          //                         selectTab = 4;
-          //                         currentTabView = Container();
-          //                       });
-          //                     },
-          //                     tooltip: 'logout',
-          //                     icon: Icon(
-          //                       Icons.logout_rounded,
-          //                       size: 40.0,
-          //                       color: TColor.white,
-          //                     ),
-          //                   ),
-          //                 ], // icon button children
-          //               ),
-          //             ),
-          //           ],
-          //         ),
-          //       )
-          //     ],
-          //   ),
-          // ),
         ],
       ),
     );
@@ -194,13 +63,33 @@ class _MainTabViewState extends State<MainTabView> {
           // TODO correct function for logoutconfirmation
           showLogoutConfirmationDialog(context);
         } else {
-          setState(() {
-            selectTab = tabIndex;
-            currentTabView = tabView;
-          });
+          setState(
+            () {
+              selectTab = tabIndex;
+              currentTabView = tabView;
+              Navigator.of(context).push(
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      tabView,
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    const begin = Offset(1.0, 0.0);
+                    const end = Offset.zero;
+                    const curve = Curves.fastEaseInToSlowEaseOut;
+                    var tween = Tween(begin: begin, end: end)
+                        .chain(CurveTween(curve: curve));
+                    var offsetAnimation = animation.drive(tween);
+                    return SlideTransition(
+                        position: offsetAnimation, child: child);
+                  },
+                  transitionDuration: Duration(milliseconds: 500),
+                ),
+              );
+            },
+          );
         }
       },
-      tooltip: 'Tab $tabIndex',
+      tooltip: 'Tab $tabView',
       icon: Icon(
         icon,
         size: 40.0,
@@ -210,37 +99,37 @@ class _MainTabViewState extends State<MainTabView> {
   }
 
   void showLogoutConfirmationDialog(BuildContext context) {
-    //   showDialog(
-    //     context: context,
-    //     builder: (BuildContext dialogContext) {
-    //       return AlertDialog(
-    //         title: Text('Logout Confirmation'),
-    //         content: Text('Are you sure you want to log out?'),
-    //         actions: <Widget>[
-    //           TextButton(
-    //             onPressed: () {
-    //               Navigator.of(dialogContext).pop(); // Close the dialog
-    //             },
-    //             child: Text('Cancel'),
-    //           ),
-    //           TextButton(
-    //             onPressed: () {
-    //               FirebaseAuth.instance.signOut();
-    //               Navigator.pushReplacement(
-    //                 context,
-    //                 MaterialPageRoute(builder: (context) => LoginPage()),
-    //               );
-    //               setState(() {
-    //                 selectTab = 4;
-    //                 currentTabView = Container();
-    //               });
-    //               Navigator.of(dialogContext).pop(); // Close the dialog
-    //             },
-    //             child: Text('Logout'),
-    //           ),
-    //         ],
-    //       );
-    //     },
-    //   );
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text('Logout Confirmation'),
+          content: Text('Are you sure you want to log out?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop(); // Close the dialog
+              },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => WelcomeScreen()),
+                );
+                setState(() {
+                  selectTab = 4;
+                  currentTabView = Container();
+                });
+                Navigator.of(dialogContext).pop(); // Close the dialog
+              },
+              child: Text('Logout'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

@@ -42,7 +42,8 @@ class _JounralViewState extends State<JounralView> {
                   // ignore: unrelated_type_equality_checks
                   if (pageData.data == null || pageData.data!.isEmpty) {
                     return Center(
-                      child: Text("You don't have any jounral pages yet, create one."),
+                      child: Text(
+                          "You don't have any jounral pages yet, create one."),
                     );
                   } else {
                     return Padding(

@@ -70,6 +70,9 @@ class _AddPageState extends State<AddPage> {
         label: Text("Save Page"),
         icon: Icon(Icons.save),
       ),
+      bottomSheet: SizedBox(
+        height: 75,
+      ),
     );
   }
 }
