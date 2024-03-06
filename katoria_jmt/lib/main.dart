@@ -42,8 +42,8 @@ class MainApp extends StatelessWidget {
       title: 'Katoria Journal Mood Tracker',
       // TODO change in final sprint
       // change home widget for dev ops testing
-      // home: WelcomeScreen(),
-      home: MainTabView(),
+      home: WelcomeScreen(),
+      // home: MainTabView(),
     );
   }
 }
