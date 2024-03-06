@@ -33,7 +33,7 @@ migrate_working_dir/
 # app build process that may have to do with firbase authentication, needed for local
 # authentication keep commented to include in project  { temp } 
 
-# /build/app
+/build/app
 # /build/shared_preferences_android
 # /build/path_provider_android
 # /build/kolin
