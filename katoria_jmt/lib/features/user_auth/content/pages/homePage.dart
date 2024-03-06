@@ -6,7 +6,7 @@ import 'package:katoria_jmt/common/color_extension.dart';
 // may need to change heading directory from pw1/ -> katoria_jmt/
 // if there are future merger conflicts
 import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
-import 'package:katoria_jmt/view/main_tab/main_tab_view.dart';
+import 'package:katoria_jmt/view/home/main_tab_view.dart';
 
 // TODO merge Maintabview here as home page
 class HomePage extends StatelessWidget {
