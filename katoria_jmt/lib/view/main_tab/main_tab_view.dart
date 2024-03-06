@@ -25,7 +25,7 @@ class _MainTabViewState extends State<MainTabView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: TColor.primary,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Stack(
         children: [
           // TODO there might be issue with making subsequent pages so come back here for that

@@ -15,8 +15,9 @@ class JounralViewState extends State<JounralView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Journal Pages"),
+        backgroundColor: Theme.of(context).colorScheme.onBackground,
       ),
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Text(''),
     );
   }

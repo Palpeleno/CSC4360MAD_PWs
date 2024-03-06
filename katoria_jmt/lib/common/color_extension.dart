@@ -20,4 +20,7 @@ class TColor {
   static Color get tertiaryText => Colors.black;
 
   static Color get white => Colors.white;
+
+  static Color get lightGreen => Color.fromARGB(255, 246, 251, 245);
+
 }
