@@ -7,7 +7,7 @@ import 'package:katoria_jmt/common/color_extension.dart';
 import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
 import 'package:katoria_jmt/features/user_auth/content/widgets/form_container.dart';
 import 'package:katoria_jmt/features/user_auth/firebase_auth/fireAuthService.dart';
-import 'package:katoria_jmt/view/main_tab/main_tab_view.dart';
+import 'package:katoria_jmt/view/home/main_tab_view.dart';
 
 
 class SignupPage extends StatefulWidget {

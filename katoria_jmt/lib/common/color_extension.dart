@@ -16,6 +16,9 @@ class TColor {
   static Color get tertiary => Color.fromARGB(255, 215, 195, 255);
   static Color get tertiaryAlpha => Color.fromARGB(243, 213, 173, 223);
 
+  static Color get base => Color.fromARGB(255, 87, 115, 100);
+  static Color get subbase => Color.fromARGB(255, 144, 191, 166);
+
   static Color get primaryText => Colors.white;
   static Color get tertiaryText => Colors.black;
 
