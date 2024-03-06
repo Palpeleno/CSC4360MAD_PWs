@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, library_private_types_in_public_api
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:katoria_jmt/db/database_provider.dart';
 import 'package:katoria_jmt/view/home/journal_entries.dart';
@@ -23,7 +24,7 @@ class _AddPageState extends State<AddPage> {
 
   late String title;
   late String body;
-  late String mood;
+  late int mood;
   late DateTime date;
 
 // input controller
@@ -93,24 +94,24 @@ class _AddPageState extends State<AddPage> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           setState(() {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => MainTabView()));
             title = titleController.text;
             body = bodyController.text;
-
-            mood = selectedMood.toString();
-
+            mood = selectedMood;
             date = DateTime.now();
 
             PageModel page = PageModel(
               // id: index,
               title: title,
               body: body,
-              mood: mood,
+              mood: mood.toString(),
               creation_date: date,
             );
             addPage(page);
           });
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MainTabView()),
+          );
         },
         label: Text("Save Page"),
         icon: Icon(Icons.save),
