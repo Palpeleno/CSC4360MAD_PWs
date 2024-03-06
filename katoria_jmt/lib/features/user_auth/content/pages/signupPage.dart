@@ -40,7 +40,8 @@ class _SignupPageState extends State<SignupPage> {
       ),
       home: Scaffold(
         // TODO add color to clakatoria_jmt
-        backgroundColor: TColor.primary,
+        backgroundColor: TColor.lightGreen,
+
         body: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),

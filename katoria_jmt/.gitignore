@@ -29,6 +29,9 @@ migrate_working_dir/
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
+/build/
+/macos/
+/ios/
 
 # app build process that may have to do with firbase authentication, needed for local
 # authentication keep commented to include in project  { temp } 
@@ -54,6 +57,7 @@ app.*.map.json
 
 # Android Studio will place build artifacts here
 
+/andorid/
 /android/app/debug
 /android/app/profile
 /android/app/release

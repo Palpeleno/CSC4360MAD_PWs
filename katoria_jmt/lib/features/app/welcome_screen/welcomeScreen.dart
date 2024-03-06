@@ -90,7 +90,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         textTheme: GoogleFonts.podkovaTextTheme(),
       ),
       home: Scaffold(
-        backgroundColor: TColor.primary,
+        backgroundColor: TColor.lightGreen,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

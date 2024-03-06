@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
       home: Scaffold(
         // TODO add color to class
-        backgroundColor: TColor.primary,
+        backgroundColor: TColor.lightGreen,
         body: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),

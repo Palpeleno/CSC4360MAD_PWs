@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:katoria_jmt/common/color_extension.dart';
 import 'package:katoria_jmt/db/database_provider.dart';
 import 'package:katoria_jmt/view/model/page_model.dart';
@@ -27,8 +28,9 @@ class _JounralViewState extends State<JounralView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Journal Pages"),
+        backgroundColor: Theme.of(context).colorScheme.onBackground,
       ),
-      backgroundColor: TColor.subbase,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: FutureBuilder<List<PageModel>>(
           future: getPages(),
           builder: (context, pageData) {
