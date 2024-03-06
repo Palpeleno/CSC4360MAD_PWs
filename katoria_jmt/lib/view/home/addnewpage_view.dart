@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import '../../common/color_extension.dart';
+// import '../../common/color_extension.dart';
 
 class AddPage extends StatefulWidget {
   AddPage({super.key});
@@ -34,6 +34,7 @@ class _AddPageState extends State<AddPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: List.generate(10, (index) {
+                  Text("test area for mood");
                   return IconButton(
                     onPressed: () {
                       setState(() {
@@ -54,7 +55,7 @@ class _AddPageState extends State<AddPage> {
             ),
             Expanded(
               child: TextField(
-                keyboardType: TextInputType.multiline,
+                // keyboardType: TextInputType.multiline,
                 maxLines: null,
                 decoration: InputDecoration(
                   border: InputBorder.none,
