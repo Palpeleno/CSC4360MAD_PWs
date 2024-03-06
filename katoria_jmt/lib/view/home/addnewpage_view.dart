@@ -20,10 +20,9 @@ class _AddPageState extends State<AddPage> {
         title: Text("Add new page"),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12 / .0),
+        // padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12 / .0),
         child: Column(
           children: [
-            Text("test text"),
             TextField(
               decoration: InputDecoration(
                   border: InputBorder.none, hintText: "Note Title"),
@@ -47,7 +46,7 @@ class _AddPageState extends State<AddPage> {
                       Icons.mood,
                       size: 16.0,
                       color: selectedMood >= index + 1
-                          ? Colors.amber
+                          ? Colors.green
                           : Colors.grey,
                     ),
                   );

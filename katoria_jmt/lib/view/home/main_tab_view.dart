@@ -3,7 +3,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:katoria_jmt/features/app/welcome_screen/welcomeScreen.dart';
-import 'package:katoria_jmt/view/home/addnewpage_view.dart';
 import 'package:katoria_jmt/view/home/journal_entries.dart';
 import 'package:katoria_jmt/view/home/profile_view.dart';
 import 'package:katoria_jmt/view/home/settings_view.dart';
@@ -45,7 +44,7 @@ class _MainTabViewState extends State<MainTabView> {
                   buildTabIconButton(
                       Icons.person_4_outlined, UserProfileView(), 2),
                   buildTabIconButton(Icons.book_outlined, JounralView(), 3),
-                  buildTabIconButton(Icons.add_comment_outlined, AddPage(), 0),
+                  // buildTabIconButton(Icons.add_comment_outlined, AddPage(), 0),
                   buildTabIconButton(Icons.logout_rounded, Container(), 4),
                 ],
               ),
