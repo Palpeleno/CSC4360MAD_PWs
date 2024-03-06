@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:katoria_jmt/features/themes/theme.dart';
-
 
 class UserProfileView extends StatefulWidget {
   const UserProfileView({super.key});

@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:katoria_jmt/features/themes/button.dart';
-import 'package:katoria_jmt/features/themes/theme.dart';
 import 'package:katoria_jmt/features/themes/themeProvider.dart';
 import 'package:provider/provider.dart';
 

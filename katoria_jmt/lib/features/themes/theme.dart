@@ -9,6 +9,7 @@ ThemeData lightMode = ThemeData(
     secondary: TColor.secondaryBeta,
     onBackground: Color.fromARGB(255, 235, 249, 232),
     onSurface: TColor.tertiaryText,
+
   )
 );
 
@@ -21,5 +22,6 @@ ThemeData darkMode = ThemeData(
     secondary: Color.fromARGB(255, 3, 55, 11),
     onBackground: Colors.black,
     onSurface: TColor.primaryText,
+    
   )
 );

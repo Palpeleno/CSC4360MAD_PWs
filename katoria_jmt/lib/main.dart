@@ -42,6 +42,7 @@ class MainApp extends StatelessWidget {
       title: 'Katoria Journal Mood Tracker',
       // TODO color extensions and fonts refractor to proper colore schema
       theme: Provider.of<ThemeProvider>(context).themeData,
+      
       home: WelcomeScreen(),
     );
   }
