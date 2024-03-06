@@ -1,13 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:katoria_jmt/features/themes/button.dart';
 import 'package:katoria_jmt/features/themes/themeProvider.dart';
 import 'package:provider/provider.dart';
 
-
 class SettingsView extends StatelessWidget {
+  // ignore: use_super_parameters
   const SettingsView({Key? key}) : super(key: key);
 
   @override
@@ -21,14 +20,12 @@ class SettingsView extends StatelessWidget {
               title: Text(
                 "Settings",
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
+                    // color: Theme.of(context).colorScheme.onSurface,
+                    ),
               ),
-              backgroundColor:
-                  Theme.of(context).colorScheme.onBackground,
+              // backgroundColor: Theme.of(context).colorScheme.onBackground,
             ),
-            backgroundColor:
-                Theme.of(context).colorScheme.background,
+            backgroundColor: Theme.of(context).colorScheme.background,
             body: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
@@ -40,8 +37,7 @@ class SettingsView extends StatelessWidget {
                       myButton(
                         color: Theme.of(context).colorScheme.secondary,
                         onTap: () {
-                          Provider.of<ThemeProvider>(context,
-                                  listen: false)
+                          Provider.of<ThemeProvider>(context, listen: false)
                               .toggleTheme();
                         },
                       ),

@@ -39,7 +39,7 @@ class _SignupPageState extends State<SignupPage> {
         textTheme: GoogleFonts.podkovaTextTheme(),
       ),
       home: Scaffold(
-        // TODO add color to clakatoria_jmt
+        // TODO add color to katoria_jmt
         backgroundColor: TColor.lightGreen,
 
         body: Center(
@@ -91,7 +91,6 @@ class _SignupPageState extends State<SignupPage> {
                     width: double.infinity,
                     height: 50,
                     decoration: BoxDecoration(
-                      // TODO added to color class {kush}
                       color: TColor.primaryBeta,
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -111,6 +110,7 @@ class _SignupPageState extends State<SignupPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    // ignore: prefer_const_constructors
                     Text("Already have an account?\t"),
                     SizedBox(
                       width: 20,

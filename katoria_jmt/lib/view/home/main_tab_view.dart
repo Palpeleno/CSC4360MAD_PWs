@@ -62,30 +62,36 @@ class _MainTabViewState extends State<MainTabView> {
         if (tabIndex == 4) {
           // TODO correct function for logoutconfirmation
           showLogoutConfirmationDialog(context);
+        }
+        if (tabIndex == 3) {
+          // TODO omit animations to journal tab
+          selectTab = 3;
+          currentTabView = JounralView();
         } else {
-          setState(
-            () {
-              selectTab = tabIndex;
-              currentTabView = tabView;
-              Navigator.of(context).push(
-                PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) =>
-                      tabView,
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                    const begin = Offset(1.0, 0.0);
-                    const end = Offset.zero;
-                    const curve = Curves.easeIn;
-                    var tween = Tween(begin: begin, end: end)
-                        .chain(CurveTween(curve: curve));
-                    var offsetAnimation = animation.drive(tween);
-                    return SlideTransition(
-                        position: offsetAnimation, child: child);
-                  },
-                  transitionDuration: Duration(milliseconds: 500),
-                ),
-              );
-            },
+          // Handle tab changes with animations
+          setState(() {
+            selectTab = tabIndex;
+            currentTabView = tabView;
+          });
+
+          Navigator.of(context).push(
+            PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) => tabView,
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                const begin = Offset(1.0, 0.0);
+                const end = Offset.zero;
+                const curve = Curves.easeInOut;
+                var tween = Tween(begin: begin, end: end)
+                    .chain(CurveTween(curve: curve));
+                var offsetAnimation = animation.drive(tween);
+                return SlideTransition(
+                  position: offsetAnimation,
+                  child: child,
+                );
+              },
+              transitionDuration: Duration(milliseconds: 500),
+            ),
           );
         }
       },
