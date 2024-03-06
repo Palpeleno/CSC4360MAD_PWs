@@ -23,6 +23,7 @@ class _AddPageState extends State<AddPage> {
         padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12 / .0),
         child: Column(
           children: [
+            Text("test text"),
             TextField(
               decoration: InputDecoration(
                   border: InputBorder.none, hintText: "Note Title"),
@@ -68,7 +69,7 @@ class _AddPageState extends State<AddPage> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          
+          setState(() {});
         },
         label: Text("Save Page"),
         icon: Icon(Icons.save),

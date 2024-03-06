@@ -14,7 +14,7 @@ class PageModel {
       required this.imgRep,
       required this.creation_date});
 
-// function from items into a map
+// function from PageModel into a map
   Map<String, dynamic> toMap() {
     return ({
       "id": id,
@@ -22,7 +22,19 @@ class PageModel {
       "body": body,
       "mood": mood,
       "imgRep": imgRep,
-      "creation_date": creation_date
+      "creation_date": creation_date.toIso8601String(),
     });
+  }
+
+// Convert Map to PageModel
+  factory PageModel.fromMap(Map<String, dynamic> map) {
+    return PageModel(
+      id: map['id'],
+      title: map['title'],
+      body: map['body'],
+      mood: map['mood'],
+      imgRep: map['imgRep'],
+      creation_date: DateTime.parse(map['creation_date']),
+    );
   }
 }

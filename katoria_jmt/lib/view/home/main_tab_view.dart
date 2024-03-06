@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:katoria_jmt/features/app/welcome_screen/welcomeScreen.dart';
 import 'package:katoria_jmt/view/home/addnewpage_view.dart';
-import 'package:katoria_jmt/view/home/jounral_entries.dart';
+import 'package:katoria_jmt/view/home/journal_entries.dart';
 import 'package:katoria_jmt/view/home/profile_view.dart';
 import 'package:katoria_jmt/view/home/settings_view.dart';
 import 'package:katoria_jmt/common/color_extension.dart';
@@ -19,6 +19,7 @@ class MainTabView extends StatefulWidget {
 class _MainTabViewState extends State<MainTabView> {
   int selectTab = 0;
   PageStorageBucket pageStorageBucket = PageStorageBucket();
+  // TODO perhaps have a landing page aka welcome screen for user that shows calender of mood tracker
   Widget currentTabView = JounralView();
   bool isNavigationBarVisible = true;
 
@@ -28,7 +29,7 @@ class _MainTabViewState extends State<MainTabView> {
       backgroundColor: TColor.primary,
       body: Stack(
         children: [
-          // TODO there might be issue with making subsequent pages so come back here for that
+          // TODO there might be issue with making subsequent persistant pages so come back here for that
           PageStorage(bucket: pageStorageBucket, child: currentTabView),
           AnimatedPositioned(
             duration: Duration(milliseconds: 300),
@@ -65,8 +66,10 @@ class _MainTabViewState extends State<MainTabView> {
         }
         if (tabIndex == 3) {
           // TODO omit animations to journal tab
-          selectTab = 3;
-          currentTabView = JounralView();
+          setState(() {
+            selectTab = 3;
+            currentTabView = JounralView();
+          });
         } else {
           // Handle tab changes with animations
           setState(() {

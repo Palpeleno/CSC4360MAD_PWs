@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:katoria_jmt/common/color_extension.dart';
 import 'package:katoria_jmt/db/database_provider.dart';
 import 'package:katoria_jmt/view/model/page_model.dart';
-// import 'package:katoria_jmt/db/database_provider.dart';
+import 'package:katoria_jmt/db/database_provider.dart';
 // import 'package:sqflite/sqflite.dart';
 
 // import './newpage_view.dart';
@@ -19,8 +19,8 @@ class JounralView extends StatefulWidget {
 
 class _JounralViewState extends State<JounralView> {
   Future<List<PageModel>> getPages() async {
-    final pages = await DatabaseProvider.db.getPages();
-    return pages;
+    final page = await DatabaseProvider.db.getPages();
+    return page;
   }
 
   @override

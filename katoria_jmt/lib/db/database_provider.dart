@@ -1,4 +1,5 @@
 // import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:katoria_jmt/view/model/page_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -38,26 +39,25 @@ class DatabaseProvider {
     }, version: 1);
   }
 
-  // FUNCTIONS  tha will add new note to our variable
-  addNewNote(PageModel page) async {
+  //function to add a new note to the database
+  Future<void> addNewPage(PageModel page) async {
     final db = await database;
-    db?.insert(
+    await db?.insert(
       "pages",
       page.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
-// fucntion fetch for database to return all elements inside page table
-    Future<dynamic> getPage() async {
-      final db = await database;
-      var res = await db!.query("pages");
-      if (res.isEmpty) {
-        return Null;
-      } else {
-        var resultMap = res.toList();
-        return resultMap.isNotEmpty ? resultMap : Null;
-      }
-    }
   }
 
-  getPages() {}
+  //function to fetch all pages from the database
+  Future<List<PageModel>> getPages() async {
+    final db = await database;
+    var res = await db!.query("pages");
+    if (res.isEmpty) {
+      return [];
+    } else {
+      // Map the result to PageModel using fromMap
+      return res.map((page) => PageModel.fromMap(page)).toList();
+    }
+  }
 }

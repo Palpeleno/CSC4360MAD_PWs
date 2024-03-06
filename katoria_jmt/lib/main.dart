@@ -11,6 +11,8 @@ import 'package:katoria_jmt/features/themes/theme.dart';
 import 'package:katoria_jmt/features/themes/themeProvider.dart';
 // ignore: unused_import
 import 'package:katoria_jmt/features/user_auth/firebase_auth/fireAuthService.dart';
+import 'package:katoria_jmt/view/home/journal_entries.dart';
+import 'package:katoria_jmt/view/home/main_tab_view.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -39,7 +41,10 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Katoria Journal Mood Tracker',
-      home: WelcomeScreen(),
+      // TODO change in final sprint
+      // change home widget for dev ops testing
+      // home: WelcomeScreen(),
+      home: MainTabView(),
     );
   }
 }
