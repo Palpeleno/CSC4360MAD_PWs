@@ -41,8 +41,6 @@ class HomePage extends StatelessWidget {
                   width: 150,
                   height: 50,
                   decoration: BoxDecoration(
-                    // TODO add color to class
-
                     color: TColor.primaryAlpha,
                     borderRadius: BorderRadius.circular(15),
                   ),
@@ -65,4 +63,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-

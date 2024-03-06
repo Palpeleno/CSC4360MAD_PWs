@@ -11,7 +11,7 @@ import 'package:katoria_jmt/view/model/page_model.dart';
 // import './newpage_view.dart';
 
 class JounralView extends StatefulWidget {
-  const JounralView({Key? key});
+  JounralView({Key? key});
 
   @override
   _JounralViewState createState() => _JounralViewState();
@@ -28,9 +28,9 @@ class _JounralViewState extends State<JounralView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Journal Pages"),
-        backgroundColor: Theme.of(context).colorScheme.onBackground,
+        // backgroundColor: Theme.of(context).colorScheme.onBackground,
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      // backgroundColor: Theme.of(context).colorScheme.background,
       body: FutureBuilder<List<PageModel>>(
           future: getPages(),
           builder: (context, pageData) {

@@ -55,7 +55,7 @@ class _AddPageState extends State<AddPage> {
             ),
             Expanded(
               child: TextField(
-                // keyboardType: TextInputType.multiline,
+                keyboardType: TextInputType.multiline,
                 maxLines: null,
                 decoration: InputDecoration(
                   border: InputBorder.none,

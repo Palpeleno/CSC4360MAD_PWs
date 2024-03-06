@@ -14,7 +14,6 @@ import 'package:katoria_jmt/features/themes/themeProvider.dart';
 import 'package:katoria_jmt/features/user_auth/firebase_auth/fireAuthService.dart';
 import 'package:provider/provider.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -41,9 +40,6 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Katoria Journal Mood Tracker',
-      // This is the theme of your application.
-      // TODO color extensions and fonts refractor to proper colore schema
-
       home: WelcomeScreen(),
     );
   }

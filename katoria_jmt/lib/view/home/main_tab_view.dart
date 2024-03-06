@@ -75,7 +75,7 @@ class _MainTabViewState extends State<MainTabView> {
                       (context, animation, secondaryAnimation, child) {
                     const begin = Offset(1.0, 0.0);
                     const end = Offset.zero;
-                    const curve = Curves.fastEaseInToSlowEaseOut;
+                    const curve = Curves.easeIn;
                     var tween = Tween(begin: begin, end: end)
                         .chain(CurveTween(curve: curve));
                     var offsetAnimation = animation.drive(tween);

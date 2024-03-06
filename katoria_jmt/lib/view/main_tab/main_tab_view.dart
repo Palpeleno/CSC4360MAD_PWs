@@ -126,7 +126,6 @@ class _MainTabViewState extends State<MainTabView> {
                             // instead of a new page make a banner pop up reguardless,
                             // of page to prompt a logout opportunity
                             IconButton(
-                              
                               padding: EdgeInsets.symmetric(horizontal: 40),
                               onPressed: () {
                                 FirebaseAuth.instance.signOut();
