@@ -43,6 +43,7 @@ class MainApp extends StatelessWidget {
       title: 'Katoria Journal Mood Tracker',
       // TODO change in final sprint
       // change home widget for dev ops testing
+      theme: Provider.of<ThemeProvider>(context).themeData,
       home: WelcomeScreen(),
       // home: MainTabView(),
     );
