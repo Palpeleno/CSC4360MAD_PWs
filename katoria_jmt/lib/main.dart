@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -9,10 +9,16 @@ import 'package:katoria_jmt/features/app/welcome_screen/welcomeScreen.dart';
 // ignore: unused_import
 import 'package:katoria_jmt/features/themes/theme.dart';
 import 'package:katoria_jmt/features/themes/themeProvider.dart';
+import 'package:katoria_jmt/features/user_auth/content/pages/homePage.dart';
+import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
+import 'package:katoria_jmt/features/user_auth/content/pages/signupPage.dart';
 // ignore: unused_import
 import 'package:katoria_jmt/features/user_auth/firebase_auth/fireAuthService.dart';
+import 'package:katoria_jmt/view/home/journal_entries.dart';
 import 'package:katoria_jmt/view/home/main_tab_view.dart';
+import 'package:katoria_jmt/view/home/profile_view.dart';
 import 'package:katoria_jmt/view/home/settings_view.dart';
+import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -46,6 +52,25 @@ class MainApp extends StatelessWidget {
       theme: Provider.of<ThemeProvider>(context).themeData,
       home: WelcomeScreen(),
       // home: MainTabView(),
+
+      // //alternative nagivation for pages
+      initialRoute: "/",
+      routes: {
+        // "/": (context) => WelcomeScreen(),
+        // "/MainTabView": (context) => MainTabView(),
+        // "/LoginPage": (context) => LoginPage(),
+        // "/SignUpPage": (context) => SignupPage(),
+        // "/HomePage": (context) => HomePage(),
+
+        // for testing
+        // "/": (context) => MainTabView(),
+
+        // "/MainTabView": (context) => MainTabView(),
+        // "/JounralEntries": (context) => JounralView(),
+        // "/Settings": (context) => SettingsView(),
+
+        // "/Profile": (context) => UserProfileView(),
+      },
     );
   }
 }

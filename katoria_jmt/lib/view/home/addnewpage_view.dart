@@ -1,17 +1,15 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, library_private_types_in_public_api
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+// import '../../common/color_extension.dart';
 import 'package:katoria_jmt/db/database_provider.dart';
-import 'package:katoria_jmt/view/home/journal_entries.dart';
 import 'package:katoria_jmt/view/home/main_tab_view.dart';
 import 'package:katoria_jmt/view/model/page_model.dart';
-// import '../../common/color_extension.dart';
-import '../../db/database_provider.dart';
 
 class AddPage extends StatefulWidget {
   final PageModel? page;
 
+  // ignore: use_super_parameters
   AddPage({Key? key, this.page}) : super(key: key);
 
   @override
@@ -22,6 +20,7 @@ class _AddPageState extends State<AddPage> {
   // defualt mood
   int selectedMood = 5;
 
+  // late int pageID;
   late String title;
   late String body;
   late int mood;
@@ -50,15 +49,16 @@ class _AddPageState extends State<AddPage> {
             TextField(
               controller: titleController,
               decoration: InputDecoration(
-                  border: InputBorder.none, hintText: "Note Title"),
+                  border: InputBorder.none, hintText: "Page Title"),
               style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
             ),
             // mood selection
+            //consdier changing to Expanded widget< Container
             Container(
               margin: EdgeInsets.symmetric(vertical: 6.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(10, (index) {
+                children: List.generate(7, (index) {
                   return IconButton(
                     onPressed: () {
                       setState(() {
@@ -92,7 +92,7 @@ class _AddPageState extends State<AddPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
+        onPressed: () async {
           setState(() {
             title = titleController.text;
             body = bodyController.text;
@@ -100,7 +100,7 @@ class _AddPageState extends State<AddPage> {
             date = DateTime.now();
 
             PageModel page = PageModel(
-              // id: index,
+              // pageID: pageID,
               title: title,
               body: body,
               mood: mood.toString(),
@@ -108,14 +108,16 @@ class _AddPageState extends State<AddPage> {
             );
             addPage(page);
           });
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => MainTabView()),
-          );
+          // TODO debug this Navigator of page creation argument
+
+          // main push argument of new page
+          await Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => MainTabView()));
         },
         label: Text("Save Page"),
         icon: Icon(Icons.save),
       ),
+      // wrapping for bottom of page, space for bottom navigation bar
       bottomSheet: SizedBox(
         height: 75,
       ),

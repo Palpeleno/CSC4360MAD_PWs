@@ -1,5 +1,5 @@
 class PageModel {
-  // int id;
+  // int pageID;
   String title;
   String body;
   String mood;
@@ -8,17 +8,17 @@ class PageModel {
 
   PageModel(
       {
-      // required this.id,
-       required this.title,
+      //required this.pageID,
+      required this.title,
       required this.body,
       required this.mood,
       // required this.imgRep,
       required this.creation_date});
 
-// function from PageModel into a map
+// function to create PageModel items into a map
   Map<String, dynamic> toMap() {
     return ({
-      // "id": id,
+      // "pageID": pageID,
       "title": title,
       "body": body,
       "mood": mood,
@@ -30,7 +30,7 @@ class PageModel {
 // Convert Map to PageModel
   factory PageModel.fromMap(Map<String, dynamic> map) {
     return PageModel(
-      // id: map['id'],
+      // pageID: map['pageID'],
       title: map['title'],
       body: map['body'],
       mood: map['mood'],

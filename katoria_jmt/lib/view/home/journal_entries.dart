@@ -9,15 +9,9 @@ import 'package:katoria_jmt/view/model/page_model.dart';
 import 'package:path/path.dart';
 // import 'package:sqflite/sqflite.dart';
 
-class JounralView extends StatefulWidget {
+class JounralView extends StatelessWidget {
   JounralView({Key? key});
 
-  @override
-  // ignore: library_private_types_in_public_api
-  _JounralViewState createState() => _JounralViewState();
-}
-
-class _JounralViewState extends State<JounralView> {
   Future<List<PageModel>> getPages() async {
     final page = await DatabaseProvider.db.getPages();
     return page;
@@ -25,6 +19,8 @@ class _JounralViewState extends State<JounralView> {
 
   @override
   Widget build(BuildContext context) {
+    final ModalRoute<Object?> page =
+        ModalRoute.of(context) as ModalRoute<Object?>;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -68,7 +64,6 @@ class _JounralViewState extends State<JounralView> {
                   );
                 }
               }
-
             default:
               return Center(
                 child: Text(

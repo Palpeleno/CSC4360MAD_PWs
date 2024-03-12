@@ -1,3 +1,5 @@
+// main tab view, for navigation through app by logged in users,
+
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,9 +18,11 @@ class MainTabView extends StatefulWidget {
 }
 
 class _MainTabViewState extends State<MainTabView> {
+  // TODO refractor to navigation route
   int selectTab = 0;
   PageStorageBucket pageStorageBucket = PageStorageBucket();
-  // TODO perhaps have a landing page aka welcome screen for user that shows calender of mood tracker
+  // TODO perhaps have a landing page aka welcome screen for user that
+  //shows calender of mood tracker
   Widget currentTabView = JounralView();
   bool isNavigationBarVisible = true;
 
@@ -40,11 +44,14 @@ class _MainTabViewState extends State<MainTabView> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  buildTabIconButton(Icons.settings, SettingsView(), 1),
                   buildTabIconButton(
-                      Icons.person_4_outlined, UserProfileView(), 2),
-                  buildTabIconButton(Icons.book_outlined, JounralView(), 3),
-                  buildTabIconButton(Icons.logout_rounded, Container(), 4),
+                      Icons.settings, SettingsView(), 1, "settings"),
+                  // buildTabIconButton(
+                  //     Icons.person_4_outlined, UserProfileView(), 2, "Profile"),
+                  buildTabIconButton(
+                      Icons.book_outlined, JounralView(), 3, "Jounral"),
+                  buildTabIconButton(
+                      Icons.logout_rounded, Container(), 4, "Logout"),
                 ],
               ),
             ),
@@ -54,7 +61,8 @@ class _MainTabViewState extends State<MainTabView> {
     );
   }
 
-  IconButton buildTabIconButton(IconData icon, Widget tabView, int tabIndex) {
+  IconButton buildTabIconButton(
+      IconData icon, Widget tabView, int tabIndex, String tabName) {
     return IconButton(
       padding: EdgeInsets.symmetric(horizontal: 40),
       onPressed: () {
@@ -68,13 +76,14 @@ class _MainTabViewState extends State<MainTabView> {
           // TODO correct function for logoutconfirmation
           showLogoutConfirmationDialog(context);
         }
-        if (tabIndex == 3) {
-          // TODO omit animations to journal tab
-          setState(() {
-            selectTab = 3;
-            currentTabView = JounralView();
-          });
-        } else {
+        // if (tabIndex == 3) {
+        //   // TODO omit animations to journal tab
+        //   setState(() {
+        //     selectTab = 3;
+        //     currentTabView = JounralView();
+        //   });
+        // }
+        else {
           // Handle tab changes with animations
           setState(() {
             selectTab = tabIndex;
@@ -106,7 +115,7 @@ class _MainTabViewState extends State<MainTabView> {
           );
         }
       },
-      tooltip: 'Tab $tabView',
+      tooltip: 'Tab $tabName',
       icon: Icon(
         icon,
         size: 40.0,
