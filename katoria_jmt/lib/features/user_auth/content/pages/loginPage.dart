@@ -4,8 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:katoria_jmt/common/color_extension.dart';
-// may need to change heading directory from pw1/ -> katoria_jmt/
-// if there are future merger conflicts
+import 'package:katoria_jmt/features/user_auth/content/pages/homePage.dart';
 import 'package:katoria_jmt/features/user_auth/content/pages/signupPage.dart';
 import 'package:katoria_jmt/features/user_auth/content/widgets/form_container.dart';
 import 'package:katoria_jmt/features/user_auth/firebase_auth/fireAuthService.dart';

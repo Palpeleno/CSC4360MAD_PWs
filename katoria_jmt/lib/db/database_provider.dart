@@ -7,7 +7,7 @@ class DatabaseProvider {
   static final DatabaseProvider db = DatabaseProvider._();
   static Database? _database;
 
-  // creating a getter for the database
+    // creating a getter for the the database
   Future<Database?> get database async {
     if (_database != null) {
       return _database;
@@ -28,30 +28,26 @@ class DatabaseProvider {
           body TEXT,
           mood TEXT,
           creation_date TEXT
-        )
+          
         ''');
-      },
-      version: 1,
-    );
+    }, version: 1);
   }
 
   // function to add a new page to the database
   Future<void> addNewPage(PageModel page) async {
     final db = await database;
-    if (db == null) {
-      return; // TODO: Handle null database
-    }
-    await db.insert(
-      "page", // corrected table name
+    await db?.insert(
+      "pages",
       page.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
 
-  // function to fetch all pages from the database
+  //  function to fetch all pages from the database
   Future<List<PageModel>> getPages() async {
     final db = await database;
     var res = await db!.query("page"); // corrected table name
+ 
     if (res.isEmpty) {
       return [];
     } else {

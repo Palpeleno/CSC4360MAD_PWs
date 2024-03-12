@@ -5,6 +5,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:katoria_jmt/features/app/welcome_screen/welcomeScreen.dart';
+import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
 import 'package:katoria_jmt/view/home/journal_entries.dart';
 import 'package:katoria_jmt/view/home/profile_view.dart';
 import 'package:katoria_jmt/view/home/settings_view.dart';
@@ -66,12 +67,12 @@ class _MainTabViewState extends State<MainTabView> {
     return IconButton(
       padding: EdgeInsets.symmetric(horizontal: 40),
       onPressed: () {
-        // if (tabIndex == 1) {
-        //   setState(() {
-        //     selectTab = 1;
-        //     currentTabView = SettingsView();
-        //   });
-        // }
+        if (tabIndex == 1) {
+          setState(() {
+            selectTab = 1;
+            currentTabView = SettingsView();
+          });
+        }
         if (tabIndex == 4) {
           // TODO correct function for logoutconfirmation
           showLogoutConfirmationDialog(context);
@@ -98,10 +99,7 @@ class _MainTabViewState extends State<MainTabView> {
                 const begin = Offset(1.0, 0.0);
                 const end = Offset.zero;
                 const curve = Curves.easeInOut;
-                if (tabView is SettingsView) {
-                  // omit animation to settings
-                  return child;
-                }
+
                 var tween = Tween(begin: begin, end: end)
                     .chain(CurveTween(curve: curve));
                 var offsetAnimation = animation.drive(tween);
@@ -129,29 +127,38 @@ class _MainTabViewState extends State<MainTabView> {
       context: context,
       builder: (BuildContext dialogContext) {
         return AlertDialog(
-          title: Text('Logout Confirmation'),
-          content: Text('Are you sure you want to log out?'),
+          title: Text('Logout Confirmation',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurface,
+              )),
+          content: Text('Are you sure you want to log out?',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurface,
+              )),
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                Navigator.of(dialogContext).pop(); // Close the dialog
+                Navigator.of(dialogContext).pop();
               },
-              child: Text('Cancel'),
+              child: Text('Cancel',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSurface,
+                  )),
             ),
             TextButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.pushReplacement(
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
+                Navigator.of(dialogContext).popUntil((route) => route.isFirst);
+                Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => WelcomeScreen()),
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  (Route<dynamic> route) => false,
                 );
-                setState(() {
-                  selectTab = 4;
-                  currentTabView = Container();
-                });
-                Navigator.of(dialogContext).pop(); // Close the dialog
               },
-              child: Text('Logout'),
+              child: Text('Logout',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSurface,
+                  )),
             ),
           ],
         );
