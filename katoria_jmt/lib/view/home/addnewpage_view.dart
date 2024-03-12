@@ -7,7 +7,6 @@ import 'package:katoria_jmt/view/home/journal_entries.dart';
 import 'package:katoria_jmt/view/home/main_tab_view.dart';
 import 'package:katoria_jmt/view/model/page_model.dart';
 // import '../../common/color_extension.dart';
-import '../../db/database_provider.dart';
 
 class AddPage extends StatefulWidget {
   final PageModel? page;
