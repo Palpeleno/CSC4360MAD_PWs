@@ -18,13 +18,13 @@ import 'package:katoria_jmt/view/home/settings_view.dart';
 import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_common/sqlite_api.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 
 void main() async {
 // initialize databse
 // Ensure that sqflite_common_ffi is properly initialized
   WidgetsFlutterBinding.ensureInitialized();
-
   // await Firebase.initializeApp(
   //   options: FirebaseOptions(
   //     apiKey: "AIzaSyBfrhUdkHCMnFNtM88B7JPaDNSFlTNEbz8",
@@ -52,8 +52,8 @@ class MainApp extends StatelessWidget {
       // TODO change in final sprint
       // change home widget for dev ops testing
       theme: Provider.of<ThemeProvider>(context).themeData,
-      // home: WelcomeScreen(),
-      home: MainTabView(),
+      home: WelcomeScreen(),
+      // home: MainTabView(),
 
       // //alternative nagivation for pages
       initialRoute: "/",
