@@ -150,6 +150,23 @@ class _AddPageState extends State<AddPage> {
     );
   }
 
+  IconData getMoodIcon(int index) {
+    switch (index) {
+      case 1:
+        return Icons.sentiment_very_dissatisfied;
+      case 2:
+        return Icons.sentiment_dissatisfied;
+      case 3:
+        return Icons.sentiment_neutral;
+      case 4:
+        return Icons.sentiment_satisfied;
+      case 5:
+        return Icons.sentiment_very_satisfied;
+      default:
+        return Icons.sentiment_neutral;
+    }
+  }
+
   _insertPage() async {
     final page = MyPage(
       title: _title.text,
