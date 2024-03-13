@@ -54,12 +54,11 @@ class _AddPageState extends State<AddPage> {
 //save buttton
           IconButton(
             onPressed: widget.page == null ? _insertPage : _updatePage,
-
+            
             // await Navigator.pushReplacement(context,
             //     MaterialPageRoute(builder: (context) => MainTabView()));
-            // print("save button succesfully saved the page");
 
-            // tooltip:
+            tooltip: "save page",
             icon: Icon(Icons.save),
           ),
         ],
@@ -117,32 +116,35 @@ class _AddPageState extends State<AddPage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () async {
-          setState(() {
-            title = _title.text;
-            body = _description.text;
-            mood = selectedMood;
-            date = DateTime.now();
 
-            MyPage page = MyPage(
-              // pageID: pageID,
-              title: title,
-              description: body,
-              mood: mood.toString(),
-              createdAt: date,
-            );
-            _insertPage();
-          });
-          // TODO debug this Navigator of page creation argument
+// old save button
+      // floatingActionButton: FloatingActionButton.extended(
+      //   onPressed: () async {
+      //     setState(() {
+      //       title = _title.text;
+      //       body = _description.text;
+      //       mood = selectedMood;
+      //       date = DateTime.now();
 
-          // main push argument of new page
-          await Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => MainTabView()));
-        },
-        label: Text("Save Page"),
-        icon: Icon(Icons.save),
-      ),
+      //       MyPage page = MyPage(
+      //         // pageID: pageID,
+      //         title: title,
+      //         description: body,
+      //         mood: mood.toString(),
+      //         createdAt: date,
+      //       );
+      //       _insertPage();
+      //     });
+      //     // TODO debug this Navigator of page creation argument
+
+      //     // main push argument of new page
+      //     await Navigator.pushReplacement(
+      //         context, MaterialPageRoute(builder: (context) => MainTabView()));
+      //   },
+      //   label: Text("Save Page"),
+      //   icon: Icon(Icons.save),
+      // ),
+
       // wrapping for bottom of page, space for bottom navigation bar
       bottomSheet: SizedBox(
         height: 75,

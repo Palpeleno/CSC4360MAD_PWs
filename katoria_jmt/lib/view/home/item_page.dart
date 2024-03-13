@@ -18,7 +18,9 @@ class ItemPage extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => AddPage(
+              // TODO item page navigation
+              // if navigation error pass '(context) =>' instead 
+                builder: (_) => AddPage(
                       page: page,
                     )));
       },

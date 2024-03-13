@@ -52,8 +52,10 @@ class MainApp extends StatelessWidget {
       // TODO change in final sprint
       // change home widget for dev ops testing
       theme: Provider.of<ThemeProvider>(context).themeData,
-      home: WelcomeScreen(),
-      // home: MainTabView(),
+      // home: WelcomeScreen(),
+
+      // TODO for testing
+      home: MainTabView(),
 
       // //alternative nagivation for pages
       initialRoute: "/",
