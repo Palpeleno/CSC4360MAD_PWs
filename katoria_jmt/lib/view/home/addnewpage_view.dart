@@ -1,17 +1,14 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import 'package:katoria_jmt/db/page_database.dart';
 import 'package:katoria_jmt/view/home/main_tab_view.dart';
 import 'package:katoria_jmt/view/model/page.dart';
-
-import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_common/sqlite_api.dart';
+import 'package:katoria_jmt/view/model/page_model.dart';
+// import '../../common/color_extension.dart';
+import '../../db/database_provider.dart';
 
 class AddPage extends StatefulWidget {
   final MyPage? page;
 
-  // ignore: use_super_parameters
   AddPage({Key? key, this.page}) : super(key: key);
 
   @override
@@ -22,9 +19,21 @@ class _AddPageState extends State<AddPage> {
   // defualt mood
   int selectedMood = 5;
 
+  // late int pageID;
+  late String title;
+  late String body;
+  late int mood;
+  late DateTime date;
+
 // input controller
-  final _title = TextEditingController();
-  final _description = TextEditingController();
+  TextEditingController titleController = TextEditingController();
+  TextEditingController bodyController = TextEditingController();
+
+  addPage(PageModel page) {
+    DatabaseProvider.db.addNewPage(page);
+    // ignore: avoid_print
+    print("page added succesfully");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,24 +74,23 @@ class _AddPageState extends State<AddPage> {
                   hintText: "Give me a title"),
               style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
             ),
-// mood selection
+            // mood selection
             //consdier changing to Expanded widget< Container
             Container(
               margin: EdgeInsets.symmetric(vertical: 6.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(7, (index) {
+                children: List.generate(5, (index) {
                   return IconButton(
                     onPressed: () {
                       setState(() {
-                        // adjust index to match the mood range
                         selectedMood = index + 1;
                       });
                     },
                     icon: Icon(
-                      Icons.mood,
-                      size: 16.0,
-                      color: selectedMood >= index + 1
+                      getMoodIcon(index + 1),
+                      size: 30.0,
+                      color: selectedMood == index + 1
                           ? Colors.green
                           : Colors.grey,
                     ),
@@ -97,30 +105,45 @@ class _AddPageState extends State<AddPage> {
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  hintText: "How are you ...",
+                  border: InputBorder.none,
+                  hintText: "your page",
                 ),
                 maxLength: 1000,
               ),
-            )
+            ),
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () async {
+          setState(() {
+            title = titleController.text;
+            body = bodyController.text;
+            mood = selectedMood;
+            date = DateTime.now();
+
+            PageModel page = PageModel(
+              // pageID: pageID,
+              title: title,
+              body: body,
+              mood: mood.toString(),
+              creation_date: date,
+            );
+            addPage(page);
+          });
+          // TODO debug this Navigator of page creation argument
+
+          // main push argument of new page
+          await Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => MainTabView()));
+        },
+        label: Text("Save Page"),
+        icon: Icon(Icons.save),
+      ),
+      // wrapping for bottom of page, space for bottom navigation bar
       bottomSheet: SizedBox(
         height: 75,
       ),
     );
-  }
-
-  _insertPage() async {
-    final page = MyPage(
-      title: _title.text,
-      description: _description.text,
-      mood: selectedMood.toString(),
-      createdAt: DateTime.now(),
-    );
-
-    await PageRepository.insert(page: page);
   }
 }
