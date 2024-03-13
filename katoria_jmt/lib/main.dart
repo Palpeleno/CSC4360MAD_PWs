@@ -22,9 +22,11 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 
 void main() async {
-// initialize databse
-// Ensure that sqflite_common_ffi is properly initialized
+// initialize database
+  //intialize database for andriod development
   // WidgetsFlutterBinding.ensureInitialized();
+
+// Ensure that sqflite_common_ffi is properly initialized
   sqfliteFfiInit();
   databaseFactory = databaseFactoryFfiWeb;
 
