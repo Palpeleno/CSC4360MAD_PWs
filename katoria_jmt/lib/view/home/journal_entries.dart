@@ -7,10 +7,10 @@ import 'package:katoria_jmt/view/home/addnewpage_view.dart';
 import 'package:katoria_jmt/view/home/item_page.dart';
 import 'package:katoria_jmt/view/model/page.dart';
 
+// db
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-//import 'package:stream/rspc.dart';
-
+import 'package:stream/rspc.dart';
 
 class JournalView extends StatefulWidget {
   JournalView({super.key});
@@ -22,8 +22,10 @@ class JournalView extends StatefulWidget {
 class _JournalViewState extends State<JournalView> {
   @override
   Widget build(BuildContext context) {
-    final ModalRoute<Object?> page =
-        ModalRoute.of(context) as ModalRoute<Object?>;
+    // TODO ????
+    // final ModalRoute<Object?> page =
+    //     ModalRoute.of(context) as ModalRoute<Object?>;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -40,7 +42,7 @@ class _JournalViewState extends State<JournalView> {
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: FutureBuilder<List<MyPage>>(
-        future: insert(),
+        future: PageRepository.getPages(),
         builder: (context, pageData) {
           switch (pageData.connectionState) {
             case ConnectionState.waiting:
@@ -81,7 +83,6 @@ class _JournalViewState extends State<JournalView> {
           }
         },
       ),
-
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -91,7 +92,6 @@ class _JournalViewState extends State<JournalView> {
         },
         child: Icon(Icons.note_add_outlined),
       ),
-
       bottomSheet: SizedBox(
         height: 75,
       ),

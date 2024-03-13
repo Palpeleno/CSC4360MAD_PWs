@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:katoria_jmt/db/page_database.dart';
 import 'package:katoria_jmt/view/home/main_tab_view.dart';
 import 'package:katoria_jmt/view/model/page.dart';
-import 'package:katoria_jmt/view/model/page.dart';
+import 'package:katoria_jmt/db/page_database.dart';
 // import '../../common/color_extension.dart';
 
 class AddPage extends StatefulWidget {
@@ -39,11 +39,11 @@ class _AddPageState extends State<AddPage> {
     super.initState();
   }
 
-  addPage(MyPage page) {
-    DatabaseProvider.db.addNewPage(page);
-    // ignore: avoid_print
-    print("page added succesfully");
-  }
+  // addPage(MyPage page) {
+  //   PageRepository.db.addNewPage(page);
+  //   // ignore: avoid_print
+  //   print("page added succesfully");
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -132,7 +132,7 @@ class _AddPageState extends State<AddPage> {
               mood: mood.toString(),
               createdAt: date,
             );
-            addPage(page);
+            _insertPage();
           });
           // TODO debug this Navigator of page creation argument
 
@@ -159,5 +159,17 @@ class _AddPageState extends State<AddPage> {
     );
 
     await PageRepository.insert(page: page);
+  }
+
+// TODO update method
+  _updatePage() async {
+    final page = MyPage(
+      title: _title.text,
+      description: _description.text,
+      mood: selectedMood.toString(),
+      createdAt: DateTime.now(),
+    );
+
+    await PageRepository.update(page: page);
   }
 }

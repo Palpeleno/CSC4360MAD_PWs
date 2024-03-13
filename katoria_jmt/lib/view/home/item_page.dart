@@ -7,8 +7,8 @@ import 'package:katoria_jmt/view/home/addnewpage_view.dart';
 import 'package:katoria_jmt/view/model/page.dart';
 
 class ItemPage extends StatelessWidget {
-  const ItemPage({super.key, required this.page});
   final MyPage page;
+  const ItemPage({super.key, required this.page});
 
   @override
   Widget build(BuildContext context) {
