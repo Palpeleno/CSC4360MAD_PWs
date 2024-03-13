@@ -7,7 +7,7 @@ class DatabaseProvider {
   static final DatabaseProvider db = DatabaseProvider._();
   static Database? _database;
 
-    // creating a getter for the the database
+  // creating a getter for the the database
   Future<Database?> get database async {
     if (_database != null) {
       return _database;
@@ -17,11 +17,10 @@ class DatabaseProvider {
   }
 
   Future<Database> initDB() async {
-    return openDatabase(
-      join(await getDatabasesPath(), "jornalpage_app.db"),
-      onCreate: (db, version) async {
-        // create journal table
-        await db.execute('''
+    return openDatabase(join(await getDatabasesPath(), "jornalpage_app.db"),
+        onCreate: (db, version) async {
+      // create journal table
+      await db.execute('''
         CREATE TABLE page(
           id INTEGER PRIMARY KEY AUTOINCREMENT, 
           title TEXT,
@@ -34,7 +33,7 @@ class DatabaseProvider {
   }
 
   // function to add a new page to the database
-  Future<void> addNewPage(PageModel page) async {
+  void addNewPage(PageModel page) async {
     final db = await database;
     await db?.insert(
       "pages",
@@ -47,7 +46,7 @@ class DatabaseProvider {
   Future<List<PageModel>> getPages() async {
     final db = await database;
     var res = await db!.query("page"); // corrected table name
- 
+
     if (res.isEmpty) {
       return [];
     } else {
