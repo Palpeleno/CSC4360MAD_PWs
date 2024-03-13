@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:katoria_jmt/db/page_database.dart';
 import 'package:katoria_jmt/view/home/main_tab_view.dart';
 import 'package:katoria_jmt/view/model/page.dart';
-import 'package:katoria_jmt/view/model/page_model.dart';
+import 'package:katoria_jmt/view/model/page.dart';
 // import '../../common/color_extension.dart';
-import '../../db/database_provider.dart';
 
 class AddPage extends StatefulWidget {
   final MyPage? page;
@@ -29,7 +28,7 @@ class _AddPageState extends State<AddPage> {
   TextEditingController titleController = TextEditingController();
   TextEditingController bodyController = TextEditingController();
 
-  addPage(PageModel page) {
+  addPage(MyPage page) {
     DatabaseProvider.db.addNewPage(page);
     // ignore: avoid_print
     print("page added succesfully");

@@ -59,11 +59,11 @@ class JounralView extends StatelessWidget {
                     child: ListView.builder(
                       itemCount: pageData.data!.length,
                       itemBuilder: (context, index) {
-                        PageModel page = pageData.data![index];
+                        MyPage page = pageData.data![index];
                         return Card(
                           child: ListTile(
                             title: Text(page.title),
-                            subtitle: Text(page.body),
+                            subtitle: Text(page.description),
                           ),
                         );
                       },
