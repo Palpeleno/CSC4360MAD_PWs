@@ -24,7 +24,7 @@ class MyPage {
       "description": description,
       "mood": mood,
       // "imgRep": imgRep,
-      "creation_date": createdAt.toString(),
+      "createdAt": createdAt.toString(),
     });
   }
 

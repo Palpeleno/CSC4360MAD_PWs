@@ -24,15 +24,19 @@ import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 void main() async {
 // initialize databse
 // Ensure that sqflite_common_ffi is properly initialized
-  WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(
-  //   options: FirebaseOptions(
-  //     apiKey: "AIzaSyBfrhUdkHCMnFNtM88B7JPaDNSFlTNEbz8",
-  //     appId: "1:695374748289:android:c1a038c0b095daa589cb80",
-  //     messagingSenderId: "695374748289",
-  //     projectId: "katoriajmt",
-  //   ),
-  // );
+  // WidgetsFlutterBinding.ensureInitialized();
+  sqfliteFfiInit();
+  databaseFactory = databaseFactoryFfiWeb;
+
+  // firebase auth
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: "AIzaSyBfrhUdkHCMnFNtM88B7JPaDNSFlTNEbz8",
+      appId: "1:695374748289:android:c1a038c0b095daa589cb80",
+      messagingSenderId: "695374748289",
+      projectId: "katoriajmt",
+    ),
+  );
   runApp(
     ChangeNotifierProvider(
       create: (context) => ThemeProvider(),
@@ -52,10 +56,10 @@ class MainApp extends StatelessWidget {
       // TODO change in final sprint
       // change home widget for dev ops testing
       theme: Provider.of<ThemeProvider>(context).themeData,
-      // home: WelcomeScreen(),
+      home: WelcomeScreen(),
 
       // TODO for testing
-      home: MainTabView(),
+      // home: MainTabView(),
 
       // //alternative nagivation for pages
       initialRoute: "/",

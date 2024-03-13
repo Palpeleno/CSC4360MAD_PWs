@@ -39,12 +39,6 @@ class _AddPageState extends State<AddPage> {
     super.initState();
   }
 
-  // addPage(MyPage page) {
-  //   PageRepository.db.addNewPage(page);
-  //   // ignore: avoid_print
-  //   print("page added succesfully");
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,13 +46,31 @@ class _AddPageState extends State<AddPage> {
         title: Text("Add new page"),
         actions: [
 //save buttton
-          IconButton(
-            onPressed: widget.page == null ? _insertPage : _updatePage,
-            
-            // await Navigator.pushReplacement(context,
-            //     MaterialPageRoute(builder: (context) => MainTabView()));
 
-            tooltip: "save page",
+          FloatingActionButton.extended(
+            onPressed: () async {
+              setState(() {
+                title = _title.text;
+                body = _description.text;
+                mood = selectedMood;
+                date = DateTime.now();
+
+                MyPage page = MyPage(
+                  // pageID: pageID,
+                  title: title,
+                  description: body,
+                  mood: mood.toString(),
+                  createdAt: date,
+                );
+                _insertPage();
+              });
+              // TODO debug this Navigator of page creation argument
+              _updatePage();
+              // main push argument of new page
+              await Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const MainTabView()));
+            },
+            label: Text("Save Page"),
             icon: Icon(Icons.save),
           ),
         ],
@@ -116,34 +128,6 @@ class _AddPageState extends State<AddPage> {
           ],
         ),
       ),
-
-// old save button
-      // floatingActionButton: FloatingActionButton.extended(
-      //   onPressed: () async {
-      //     setState(() {
-      //       title = _title.text;
-      //       body = _description.text;
-      //       mood = selectedMood;
-      //       date = DateTime.now();
-
-      //       MyPage page = MyPage(
-      //         // pageID: pageID,
-      //         title: title,
-      //         description: body,
-      //         mood: mood.toString(),
-      //         createdAt: date,
-      //       );
-      //       _insertPage();
-      //     });
-      //     // TODO debug this Navigator of page creation argument
-
-      //     // main push argument of new page
-      //     await Navigator.pushReplacement(
-      //         context, MaterialPageRoute(builder: (context) => MainTabView()));
-      //   },
-      //   label: Text("Save Page"),
-      //   icon: Icon(Icons.save),
-      // ),
 
       // wrapping for bottom of page, space for bottom navigation bar
       bottomSheet: SizedBox(

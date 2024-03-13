@@ -70,5 +70,6 @@ class PageRepository {
     );
   }
 
+// delete function
   // static delete({required})
 }
