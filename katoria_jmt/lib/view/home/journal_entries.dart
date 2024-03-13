@@ -7,12 +7,17 @@ import 'package:katoria_jmt/view/home/addnewpage_view.dart';
 import 'package:katoria_jmt/view/home/item_page.dart';
 import 'package:katoria_jmt/view/model/page.dart';
 
+import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_common/sqlite_api.dart';
 
-class JounralView extends StatelessWidget {
-  JounralView({Key? key});
+class JournalView extends StatefulWidget {
+  JournalView({super.key});
 
+  @override
+  State<JournalView> createState() => _JournalViewState();
+}
+
+class _JournalViewState extends State<JournalView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,18 +26,39 @@ class JounralView extends StatelessWidget {
           "Journal Pages",
           style: TextStyle(color: TColor.tertiaryText),
         ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () => setState(() {}),
+              icon: Icon(Icons.refresh_outlined))
+        ],
         backgroundColor: Theme.of(context).colorScheme.onBackground,
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
+      //  ListView(
+      //   padding: EdgeInsets.all(15),
+      //   children: [
+      //     ItemPage(),
+      //     ItemPage(),
+      // ItemPage(),
+      //   ],
+      // ),
 
       //  new body
-      body: ListView(
-        padding: EdgeInsets.all(15),
-        children: [
-          ItemPage(),
-          ItemPage(),
-          ItemPage(),
-        ],
+      body: FutureBuilder(
+        future: PageRepository.getPages(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.data == null || snapshot.data!.isEmpty) {
+              return Center(child: Text("empty journal"));
+            }
+            return ListView(
+              padding: EdgeInsets.all(15),
+              children: [for (var page in snapshot.data!) ItemPage(page: page)],
+            );
+          }
+          return SizedBox();
+        },
       ),
 
       floatingActionButton: FloatingActionButton(

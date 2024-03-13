@@ -23,16 +23,16 @@ import 'package:sqflite_common/sqlite_api.dart';
 void main() async {
 // initialize databse
 // Ensure that sqflite_common_ffi is properly initialized
-
-  await Firebase.initializeApp(
-    options: FirebaseOptions(
-      apiKey: "AIzaSyBfrhUdkHCMnFNtM88B7JPaDNSFlTNEbz8",
-      appId: "1:695374748289:android:c1a038c0b095daa589cb80",
-      messagingSenderId: "695374748289",
-      projectId: "katoriajmt",
-    ),
-  );
   WidgetsFlutterBinding.ensureInitialized();
+
+  // await Firebase.initializeApp(
+  //   options: FirebaseOptions(
+  //     apiKey: "AIzaSyBfrhUdkHCMnFNtM88B7JPaDNSFlTNEbz8",
+  //     appId: "1:695374748289:android:c1a038c0b095daa589cb80",
+  //     messagingSenderId: "695374748289",
+  //     projectId: "katoriajmt",
+  //   ),
+  // );
   runApp(
     ChangeNotifierProvider(
       create: (context) => ThemeProvider(),

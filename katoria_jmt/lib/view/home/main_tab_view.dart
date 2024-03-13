@@ -26,7 +26,7 @@ class _MainTabViewState extends State<MainTabView> {
   int selectTab = 0;
   // TODO perhaps have a landing page aka welcome screen for user that
   //shows calender of mood tracker
-  Widget currentTabView = JounralView();
+  Widget currentTabView = JournalView();
   bool isNavigationBarVisible = true;
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class _MainTabViewState extends State<MainTabView> {
               ),
               buildTabIconButton(
                 Icons.book_outlined,
-                JounralView(),
+                JournalView(),
                 3,
                 "Journal",
               ),
@@ -85,7 +85,7 @@ class _MainTabViewState extends State<MainTabView> {
           // TODO omit animations to journal tab
           setState(() {
             selectTab = 3;
-            currentTabView = JounralView();
+            currentTabView = JournalView();
           });
         } else {
           // Handle tab changes with animations

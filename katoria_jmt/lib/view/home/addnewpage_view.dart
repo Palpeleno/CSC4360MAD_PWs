@@ -10,9 +10,9 @@ import 'package:sqflite_common/sqlite_api.dart';
 
 class AddPage extends StatefulWidget {
   final MyPage? page;
-
+  AddPage({super.key, this.page});
   // ignore: use_super_parameters
-  AddPage({Key? key, this.page}) : super(key: key);
+  // AddPage({Key? key, this.page}) : super(key: key);
 
   @override
   _AddPageState createState() => _AddPageState();
@@ -27,28 +27,32 @@ class _AddPageState extends State<AddPage> {
   final _description = TextEditingController();
 
   @override
+  // calls when opening the added page to jounral view screen
+  void initState() {
+    if (widget.page != null) {
+      _title.text = widget.page!.title;
+      _description.text = widget.page!.description;
+    }
+
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Add new page"),
         actions: [
-//save button
-          Padding(
-            padding: const EdgeInsets.only(right: 1.0),
-            child: FloatingActionButton.extended(
-              onPressed: () async {
-                _insertPage();
-                // setState(() {
-                //   // insert(page);
-                // });
+//save buttton
+          IconButton(
+            onPressed: widget.page == null ? _insertPage : _updatePage,
 
-                // await Navigator.pushReplacement(context,
-                //     MaterialPageRoute(builder: (context) => MainTabView()));
-                print("save button succesfully saved the page");
-              },
-              label: Text("Save Page"),
-              icon: Icon(Icons.save),
-            ),
+            // await Navigator.pushReplacement(context,
+            //     MaterialPageRoute(builder: (context) => MainTabView()));
+            // print("save button succesfully saved the page");
+
+            // tooltip:
+            icon: Icon(Icons.save),
           ),
         ],
       ),
@@ -123,4 +127,18 @@ class _AddPageState extends State<AddPage> {
 
     await PageRepository.insert(page: page);
   }
+
+  _updatePage() async {
+    final page = MyPage(
+      id: widget.page!.id,
+      title: _title.text,
+      description: _description.text,
+      mood: selectedMood.toString(),
+      createdAt: widget.page!.createdAt,
+    );
+
+    await PageRepository.update(page: page);
+  }
+
+  
 }

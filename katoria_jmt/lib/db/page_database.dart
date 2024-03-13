@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:katoria_jmt/view/model/page.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_common/sqlite_api.dart';
 
 // our local database
 // database manipulation functions
@@ -40,15 +40,35 @@ class PageRepository {
   }
 
   // function to fetch all pages from the database
-  // static Future<List<MyPage>> getPages() async {
-  //   final db = await _database();
-  //   var res = await db.query(_tableName);
+  static Future<List<MyPage>> getPages() async {
+    final db = await _database();
 
-  //   if (res.isEmpty) {
-  //     return [];
-  //   } else {
-  //     // Map the result to MyPage using fromMap
-  //     return res.map((page) => MyPage.fromMap(page)).toList();
-  //   }
-  // }
+    // fetch all items from database
+    final List<Map<String, dynamic>> maps = await db.query(_tableName);
+
+    //convert the List<Map<string>, syncamc > in to a list of our table
+    return List.generate(maps.length, (i) {
+      return MyPage(
+        id: maps[i]['id'] as int,
+        title: maps[i]['title'] as String,
+        description: maps[i]['description'] as String,
+        mood: maps[i]['mood'] as String,
+        createdAt: DateTime.parse(maps[i]['createdAt']),
+      );
+    });
+  }
+
+  //update functions for page
+  static update({required MyPage page}) async {
+    final db = await _database();
+
+    await db.update(
+      _tableName,
+      page.toMap(),
+      where: 'id = ?',
+      whereArgs: [page.id],
+    );
+  }
+
+  // static delete({required})
 }
