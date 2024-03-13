@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:katoria_jmt/features/app/welcome_screen/welcomeScreen.dart';
 import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
 import 'package:katoria_jmt/view/home/journal_entries.dart';
-import 'package:katoria_jmt/view/home/profile_view.dart';
+//import 'package:katoria_jmt/view/home/profile_view.dart';
 import 'package:katoria_jmt/view/home/settings_view.dart';
 import 'package:katoria_jmt/common/color_extension.dart';
 
