@@ -1,6 +1,7 @@
 import 'package:katoria_jmt/view/model/page.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common/sqlite_api.dart';
 
 // our local database
 // database manipulation functions
@@ -39,15 +40,15 @@ class PageRepository {
   }
 
   // function to fetch all pages from the database
-  static Future<List<MyPage>> getPages() async {
-    final db = await _database();
-    var res = await db.query(_tableName);
+  // static Future<List<MyPage>> getPages() async {
+  //   final db = await _database();
+  //   var res = await db.query(_tableName);
 
-    if (res.isEmpty) {
-      return [];
-    } else {
-      // Map the result to MyPage using fromMap
-      return res.map((page) => MyPage.fromMap(page)).toList();
-    }
-  }
+  //   if (res.isEmpty) {
+  //     return [];
+  //   } else {
+  //     // Map the result to MyPage using fromMap
+  //     return res.map((page) => MyPage.fromMap(page)).toList();
+  //   }
+  // }
 }

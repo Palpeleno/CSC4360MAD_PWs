@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-// import '../../common/color_extension.dart';
 import 'package:katoria_jmt/db/page_database.dart';
 import 'package:katoria_jmt/view/home/main_tab_view.dart';
 import 'package:katoria_jmt/view/model/page.dart';
-// import '../../common/color_extension.dart';
-import '../../db/page_database.dart';
+
+import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common/sqlite_api.dart';
 
 class AddPage extends StatefulWidget {
   final MyPage? page;
@@ -37,12 +37,14 @@ class _AddPageState extends State<AddPage> {
             padding: const EdgeInsets.only(right: 1.0),
             child: FloatingActionButton.extended(
               onPressed: () async {
-                setState(() {
-                  // insert(page);
-                });
+                _insertPage();
+                // setState(() {
+                //   // insert(page);
+                // });
 
-                await Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => MainTabView()));
+                // await Navigator.pushReplacement(context,
+                //     MaterialPageRoute(builder: (context) => MainTabView()));
+                print("save button succesfully saved the page");
               },
               label: Text("Save Page"),
               icon: Icon(Icons.save),
@@ -111,12 +113,14 @@ class _AddPageState extends State<AddPage> {
     );
   }
 
-  // _insertPage() async {
-  //   final page = Page(
-  //       title: _title.text,
-  //       body: _description.text,
-  //       mood: _mood.text,
-  //       createdAt: DateTime.now());
-  //   await PageRepository.insert(page: page);
-  // }
+  _insertPage() async {
+    final page = MyPage(
+      title: _title.text,
+      description: _description.text,
+      mood: selectedMood.toString(),
+      createdAt: DateTime.now(),
+    );
+
+    await PageRepository.insert(page: page);
+  }
 }

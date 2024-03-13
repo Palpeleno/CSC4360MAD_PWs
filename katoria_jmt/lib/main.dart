@@ -3,12 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-// may need to change heading directory from pw1/ -> katoria_jmt/
-// if there are future merger conflicts
-import 'package:katoria_jmt/features/app/welcome_screen/welcomeScreen.dart';
-// ignore: unused_import
 import 'package:katoria_jmt/features/themes/theme.dart';
 import 'package:katoria_jmt/features/themes/themeProvider.dart';
+import 'package:katoria_jmt/features/app/welcome_screen/welcomeScreen.dart';
 import 'package:katoria_jmt/features/user_auth/content/pages/homePage.dart';
 import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
 import 'package:katoria_jmt/features/user_auth/content/pages/signupPage.dart';
@@ -20,10 +17,13 @@ import 'package:katoria_jmt/view/home/profile_view.dart';
 import 'package:katoria_jmt/view/home/settings_view.dart';
 import 'package:path/path.dart';
 import 'package:provider/provider.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common/sqlite_api.dart';
 
 void main() async {
 // initialize databse
-  WidgetsFlutterBinding.ensureInitialized();
+// Ensure that sqflite_common_ffi is properly initialized
+
   await Firebase.initializeApp(
     options: FirebaseOptions(
       apiKey: "AIzaSyBfrhUdkHCMnFNtM88B7JPaDNSFlTNEbz8",
@@ -32,6 +32,7 @@ void main() async {
       projectId: "katoriajmt",
     ),
   );
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     ChangeNotifierProvider(
       create: (context) => ThemeProvider(),

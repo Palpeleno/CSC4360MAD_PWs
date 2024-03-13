@@ -11,6 +11,9 @@ import 'package:katoria_jmt/view/home/profile_view.dart';
 import 'package:katoria_jmt/view/home/settings_view.dart';
 import 'package:katoria_jmt/common/color_extension.dart';
 
+import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common/sqlite_api.dart';
+
 class MainTabView extends StatefulWidget {
   const MainTabView({super.key});
 

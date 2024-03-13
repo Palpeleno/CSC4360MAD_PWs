@@ -7,6 +7,9 @@ import 'package:katoria_jmt/view/home/addnewpage_view.dart';
 import 'package:katoria_jmt/view/home/item_page.dart';
 import 'package:katoria_jmt/view/model/page.dart';
 
+import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common/sqlite_api.dart';
+
 class JounralView extends StatelessWidget {
   JounralView({Key? key});
 

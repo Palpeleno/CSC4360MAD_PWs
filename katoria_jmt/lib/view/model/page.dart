@@ -1,8 +1,10 @@
+import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common/sqlite_api.dart';
+
 class MyPage {
   //nullable id
   int? id;
-  String title, description;
-  String mood;
+  String title, description, mood;
   // String imgRep;
   DateTime createdAt;
 
@@ -27,14 +29,4 @@ class MyPage {
   }
 
 // Convert Map to MyPage
-  factory MyPage.fromMap(Map<String, dynamic> map) {
-    return MyPage(
-      // pageID: map['pageID'],
-      title: map['title'],
-      description: map['description'],
-      mood: map['mood'],
-      // imgRep: map['imgRep'],
-      createdAt: DateTime.parse(map['creation_date']),
-    );
-  }
 }
