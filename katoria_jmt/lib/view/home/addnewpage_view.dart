@@ -1,17 +1,13 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
-// import '../../common/color_extension.dart';
 import 'package:katoria_jmt/db/database_provider.dart';
 import 'package:katoria_jmt/view/home/main_tab_view.dart';
 import 'package:katoria_jmt/view/model/page_model.dart';
-// import '../../common/color_extension.dart';
 import '../../db/database_provider.dart';
+
 
 class AddPage extends StatefulWidget {
   final PageModel? page;
 
-  // ignore: use_super_parameters
   AddPage({Key? key, this.page}) : super(key: key);
 
   @override
@@ -19,23 +15,16 @@ class AddPage extends StatefulWidget {
 }
 
 class _AddPageState extends State<AddPage> {
-  // defualt mood
-  int selectedMood = 5;
-
-  // late int pageID;
   late String title;
   late String body;
-  late int mood;
-  late DateTime date;
+  late int selectedMood = 0;
 
-// input controller
   TextEditingController titleController = TextEditingController();
   TextEditingController bodyController = TextEditingController();
 
   addPage(PageModel page) {
     DatabaseProvider.db.addNewPage(page);
-    // ignore: avoid_print
-    print("page added succesfully");
+    print("Page added successfully");
   }
 
   @override
@@ -54,24 +43,21 @@ class _AddPageState extends State<AddPage> {
                   border: InputBorder.none, hintText: "Page Title"),
               style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
             ),
-            // mood selection
-            //consdier changing to Expanded widget< Container
             Container(
               margin: EdgeInsets.symmetric(vertical: 6.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(7, (index) {
+                children: List.generate(5, (index) {
                   return IconButton(
                     onPressed: () {
                       setState(() {
-                        // adjust index to match the mood range
                         selectedMood = index + 1;
                       });
                     },
                     icon: Icon(
-                      Icons.mood,
-                      size: 16.0,
-                      color: selectedMood >= index + 1
+                      getMoodIcon(index + 1),
+                      size: 30.0,
+                      color: selectedMood == index + 1
                           ? Colors.green
                           : Colors.grey,
                     ),
@@ -86,10 +72,10 @@ class _AddPageState extends State<AddPage> {
                 maxLines: null,
                 decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintText: "your page",
+                  hintText: "Your page",
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -98,31 +84,51 @@ class _AddPageState extends State<AddPage> {
           setState(() {
             title = titleController.text;
             body = bodyController.text;
-            mood = selectedMood;
-            date = DateTime.now();
 
-            PageModel page = PageModel(
-              // pageID: pageID,
-              title: title,
-              body: body,
-              mood: mood.toString(),
-              creation_date: date,
-            );
-            addPage(page);
+            // Ensure a mood is selected before saving
+            if (selectedMood != null) {
+              PageModel page = PageModel(
+                title: title,
+                body: body,
+                mood: selectedMood.toString(),
+                creation_date: DateTime.now(),
+              );
+              addPage(page);
+            } else {
+              // Show an error message or handle the case where no mood is selected
+            }
           });
-          // TODO debug this Navigator of page creation argument
 
-          // main push argument of new page
-          await Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => MainTabView()));
+         await Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => MainTabView()),
+          ); 
+
+          //Navigator.pop(context);
         },
         label: Text("Save Page"),
         icon: Icon(Icons.save),
       ),
-      // wrapping for bottom of page, space for bottom navigation bar
       bottomSheet: SizedBox(
         height: 75,
       ),
     );
+  }
+
+  IconData getMoodIcon(int index) {
+    switch (index) {
+      case 1:
+        return Icons.sentiment_very_dissatisfied;
+      case 2:
+        return Icons.sentiment_dissatisfied;
+      case 3:
+        return Icons.sentiment_neutral;
+      case 4:
+        return Icons.sentiment_satisfied;
+      case 5:
+        return Icons.sentiment_very_satisfied;
+      default:
+        return Icons.sentiment_neutral;
+    }
   }
 }
