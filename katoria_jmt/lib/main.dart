@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:katoria_jmt/features/app/welcome_screen/welcomeScreen.dart';
@@ -16,13 +19,31 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 
 void main() async {
-// initialize database
-  //intialize database for andriod development
-  WidgetsFlutterBinding.ensureInitialized();
+  //
+  //  dart run sqflite_common_ffi_web:setup
+  // for remaking web db set up in terminal
 
-// Ensure that sqflite_common_ffi is properly initialized
+  // initialize database
   sqfliteFfiInit();
   databaseFactory = databaseFactoryFfiWeb;
+
+// Initialize database for non-web platforms
+  if (!kIsWeb) {
+    //   print('we are web db');
+    sqfliteFfiInit();
+    databaseFactory = databaseFactoryFfiWeb;
+    //   if (Platform.isAndroid) {
+    //     print('we are droid db');
+
+    //     WidgetsFlutterBinding.ensureInitialized();
+    //   } else if (!Platform.isWindows || !Platform.isLinux) {
+    //     print('we are web windows or linux');
+
+    //     // Change the default factory. On iOS/Android, if not using `sqlite_flutter_lib` you can forget
+    //     // this step, it will use the sqlite version available on the system.
+    //     // Initialize FFI
+    //   }
+  }
 
   // firebase auth
   await Firebase.initializeApp(
