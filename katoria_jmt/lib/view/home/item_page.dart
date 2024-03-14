@@ -107,7 +107,6 @@ class ItemPage extends StatelessWidget {
             if (page.image.isNotEmpty)
               Image.memory(Uint8List.fromList(base64Decode(page.image)),
                   width: 50, height: 50),
-            // SizedBox(height: 10),
           ],
         ),
       ),

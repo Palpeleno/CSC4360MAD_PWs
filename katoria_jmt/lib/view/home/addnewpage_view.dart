@@ -93,10 +93,7 @@ class _AddPageState extends State<AddPage> {
                 ? _insertPage
                 : () {
                     _updatePage();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MainTabView()),
-                    );
+                    Navigator.pop(context);
                   },
             tooltip: "save page",
             icon: Icon(Icons.save),
@@ -107,14 +104,6 @@ class _AddPageState extends State<AddPage> {
           widget.page != null
               ? IconButton(
                   onPressed: () {
-                    // TODO debug this Navigator of page creation argument
-                    // _updatePage();
-                    // main push argument of new page
-                    // await Navigator.pushReplacement(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => const MainTabView()));
-
                     showDialog(
                       context: context,
                       builder: (context) => AlertDialog(
