@@ -4,14 +4,16 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:katoria_jmt/features/app/welcome_screen/welcomeScreen.dart';
 import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
 import 'package:katoria_jmt/view/home/journal_entries.dart';
 //import 'package:katoria_jmt/view/home/profile_view.dart';
 import 'package:katoria_jmt/view/home/settings_view.dart';
 import 'package:katoria_jmt/common/color_extension.dart';
 
+// ignore: unused_import
 import 'package:sqflite/sqflite.dart';
+
+// ignore: unused_import, depend_on_referenced_packages
 import 'package:sqflite_common/sqlite_api.dart';
 
 class MainTabView extends StatefulWidget {

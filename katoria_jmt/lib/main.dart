@@ -2,21 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-import 'package:katoria_jmt/features/themes/theme.dart';
 import 'package:katoria_jmt/features/themes/themeProvider.dart';
-import 'package:katoria_jmt/features/app/welcome_screen/welcomeScreen.dart';
-import 'package:katoria_jmt/features/user_auth/content/pages/homePage.dart';
-import 'package:katoria_jmt/features/user_auth/content/pages/loginPage.dart';
-import 'package:katoria_jmt/features/user_auth/content/pages/signupPage.dart';
 // ignore: unused_import
 import 'package:katoria_jmt/features/user_auth/firebase_auth/fireAuthService.dart';
-import 'package:katoria_jmt/view/home/journal_entries.dart';
 import 'package:katoria_jmt/view/home/main_tab_view.dart';
-import 'package:katoria_jmt/view/home/profile_view.dart';
-import 'package:katoria_jmt/view/home/settings_view.dart';
+// ignore: unused_import
 import 'package:path/path.dart';
 import 'package:provider/provider.dart';
+// ignore: unnecessary_import
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
@@ -24,7 +17,7 @@ import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 void main() async {
 // initialize database
   //intialize database for andriod development
-  // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
 
 // Ensure that sqflite_common_ffi is properly initialized
   sqfliteFfiInit();
@@ -58,10 +51,10 @@ class MainApp extends StatelessWidget {
       // TODO change in final sprint
       // change home widget for dev ops testing
       theme: Provider.of<ThemeProvider>(context).themeData,
-      home: WelcomeScreen(),
+      // home: WelcomeScreen(),
 
       // TODO for testing
-      // home: MainTabView(),
+      home: MainTabView(),
 
       // //alternative nagivation for pages
       initialRoute: "/",

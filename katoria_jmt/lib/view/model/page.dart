@@ -4,8 +4,7 @@ import 'package:sqflite_common/sqlite_api.dart';
 class MyPage {
   //nullable id
   int? id;
-  String title, description, mood;
-  // String imgRep;
+  String title, description, mood, image;
   DateTime createdAt;
 
   MyPage(
@@ -14,7 +13,7 @@ class MyPage {
       required this.title,
       required this.description,
       required this.mood,
-      // required this.imgRep,
+      required this.image,
       required this.createdAt});
 
 // function to create MyPage items into a map
@@ -23,10 +22,8 @@ class MyPage {
       "title": title,
       "description": description,
       "mood": mood,
-      // "imgRep": imgRep,
+      "imgRep": image,
       "createdAt": createdAt.toString(),
     });
   }
-
-// Convert Map to MyPage
 }

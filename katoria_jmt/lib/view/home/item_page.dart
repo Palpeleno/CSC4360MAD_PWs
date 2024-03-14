@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:katoria_jmt/common/color_extension.dart';
@@ -18,9 +21,9 @@ class ItemPage extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-              // TODO item page navigation
-              // if navigation error pass '(context) =>' instead 
-                builder: (_) => AddPage(
+                // TODO item page navigation
+
+                builder: (context) => AddPage(
                       page: page,
                     )));
       },
@@ -34,6 +37,7 @@ class ItemPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   color: TColor.primaryAlpha),
               //dumby practice notes in jounral
+// date area
               child: Column(
                 children: [
                   Text(
@@ -57,7 +61,11 @@ class ItemPage extends StatelessWidget {
                 ],
               ),
             ),
+// date area end
+
             SizedBox(width: 15),
+// title/ description area
+
             Expanded(
                 child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,7 +101,13 @@ class ItemPage extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 )
               ],
-            ))
+            )),
+            SizedBox(height: 5),
+// area for user added image
+            if (page.image.isNotEmpty)
+              Image.memory(Uint8List.fromList(base64Decode(page.image)),
+                  width: 10, height: 10),
+            SizedBox(height: 10),
           ],
         ),
       ),

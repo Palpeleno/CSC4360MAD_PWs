@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:katoria_jmt/view/model/page.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -21,6 +20,7 @@ class PageRepository {
           title TEXT,
           description TEXT,
           mood TEXT,
+          imgRep TEXT,
           createdAt TEXT
         )
       ''');
@@ -53,6 +53,7 @@ class PageRepository {
         title: maps[i]['title'] as String,
         description: maps[i]['description'] as String,
         mood: maps[i]['mood'] as String,
+        image: maps[i]['imgRep'] as String,
         createdAt: DateTime.parse(maps[i]['createdAt']),
       );
     });
@@ -71,5 +72,9 @@ class PageRepository {
   }
 
 // delete function
-  // static delete({required})
+  static delete({required MyPage page}) async {
+    final db = await _database();
+
+    await db.delete(_tableName, where: 'id = ?', whereArgs: [page.id]);
+  }
 }

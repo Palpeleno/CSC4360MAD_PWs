@@ -22,6 +22,7 @@ dependencies:
   sqflite_common_ffi_web: ^0.4.2+3
   stream: ^3.0.3
   intl: ^0.19.0
+  image_picker: ^1.0.7
 
 dev_dependencies:
   flutter_test:
