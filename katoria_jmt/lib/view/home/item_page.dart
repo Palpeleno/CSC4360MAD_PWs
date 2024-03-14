@@ -24,7 +24,7 @@ class ItemPage extends StatelessWidget {
                 // TODO item page navigation
 
                 builder: (context) => AddPage(
-                      page: page,
+                      page: page, onDeleted: () {  },
                     )));
       },
       child: Container(

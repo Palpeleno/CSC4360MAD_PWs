@@ -15,8 +15,9 @@ import 'package:image_picker/image_picker.dart';
 
 class AddPage extends StatefulWidget {
   final MyPage? page;
-
-  const AddPage({Key? key, this.page}) : super(key: key);
+  final Function() onDeleted;
+  const AddPage({Key? key, this.page, required this.onDeleted})
+      : super(key: key);
 
   @override
   _AddPageState createState() => _AddPageState();
@@ -57,37 +58,6 @@ class _AddPageState extends State<AddPage> {
         title: Text("Add new page"),
         actions: [
 //save buttton
-          // TODO fox navigation
-          // old implementation
-          // floatingActionButton (
-          //   onPressed: () async {
-          //     setState(() {
-          //       title = _title.text;
-          //       body = _description.text;
-          //       mood = selectedMood;
-          //       _imageString = _imageString;
-          //       date = DateTime.now();
-
-          //       // MyPage page = MyPage(
-          //       //   // pageID: pageID,
-          //       //   title: title,
-          //       //   description: body,
-          //       //   mood: mood.toString(),
-          //       //   image: _imageString,
-          //       //   createdAt: date,
-          //       // );
-          //     });
-          //     _insertPage();
-          //     // TODO debug this Navigator of page creation argument
-          //     _updatePage();
-          //     // main push argument of new page
-          //     await Navigator.push(context,
-          //         MaterialPageRoute(builder: (context) => const MainTabView()));
-          //   },
-          //   tooltip: 'Save Page',
-          //   icon: Icon(Icons.save),
-          // ),
-// new icon button, does not redirect
           IconButton(
             onPressed: widget.page == null
                 ? _insertPage
@@ -281,8 +251,10 @@ class _AddPageState extends State<AddPage> {
 
   //delte function
   _deltePage() async {
-    PageRepository.delete(page: widget.page!).then((e) {
+    await PageRepository.delete(page: widget.page!).then((e) {
       Navigator.pop(context);
+
+      widget.onDeleted();
     });
   }
 }

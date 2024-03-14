@@ -21,6 +21,10 @@ class JournalView extends StatefulWidget {
 }
 
 class _JournalViewState extends State<JournalView> {
+  Future<void> _refreshPages() async {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,8 +45,10 @@ class _JournalViewState extends State<JournalView> {
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
 
-// new future builder
-      body: FutureBuilder(
+// new future builder in body
+      body: RefreshIndicator(
+        onRefresh: _refreshPages,
+        child: FutureBuilder(
           future: PageRepository.getPages(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
@@ -60,14 +66,18 @@ class _JournalViewState extends State<JournalView> {
               );
             } // if the connection state is false
             return SizedBox();
-          }),
+          },
+        ),
+      ),
 // new future builder
-      // ,sizedBox(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => AddPage()),
+            MaterialPageRoute(
+                builder: (context) => AddPage(
+                      onDeleted: () {},
+                    )),
           );
         },
         child: Icon(Icons.note_add_outlined),
