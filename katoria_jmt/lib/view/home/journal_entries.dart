@@ -1,6 +1,7 @@
 // ignore_for_file: sort_child_properties_last, prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:katoria_jmt/common/color_extension.dart';
 
 import 'package:katoria_jmt/db/page_database.dart';
 import 'package:katoria_jmt/view/home/addnewpage_view.dart';
@@ -20,13 +21,19 @@ class JournalView extends StatefulWidget {
 }
 
 class _JournalViewState extends State<JournalView> {
+  Future<void> _refreshPages() async {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
           "Journal Pages",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
         ),
         centerTitle: true,
         actions: [
@@ -38,8 +45,10 @@ class _JournalViewState extends State<JournalView> {
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
 
-// new future builder
-      body: FutureBuilder(
+// new future builder in body
+      body: RefreshIndicator(
+        onRefresh: _refreshPages,
+        child: FutureBuilder(
           future: PageRepository.getPages(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
@@ -57,14 +66,18 @@ class _JournalViewState extends State<JournalView> {
               );
             } // if the connection state is false
             return SizedBox();
-          }),
+          },
+        ),
+      ),
 // new future builder
-      // ,sizedBox(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => AddPage()),
+            MaterialPageRoute(
+                builder: (context) => AddPage(
+                      onDeleted: () {},
+                    )),
           );
         },
         child: Icon(Icons.note_add_outlined),

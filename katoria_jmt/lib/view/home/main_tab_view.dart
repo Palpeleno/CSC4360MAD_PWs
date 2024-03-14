@@ -72,13 +72,6 @@ class _MainTabViewState extends State<MainTabView> {
     return IconButton(
       padding: EdgeInsets.symmetric(horizontal: 40),
       onPressed: () {
-        // if (tabIndex == 1) {
-        //   // Navigate to SettingsView using a Navigator
-        //   Navigator.push(
-        //     context,
-        //     MaterialPageRoute(builder: (context) => SettingsView()),
-        //   );
-        // }
         if (tabIndex == 4) {
           // TODO correct function for logoutconfirmation
           showLogoutConfirmationDialog(context);
