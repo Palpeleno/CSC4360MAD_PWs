@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'dart:convert';
 
@@ -59,19 +59,21 @@ class _AddPageState extends State<AddPage> {
 //save buttton
           // TODO fox navigation
           // old implementation
-          // IconButton(
+          // floatingActionButton (
           //   onPressed: () async {
           //     setState(() {
-          //       // title = _title.text;
-          //       // body = _description.text;
-          //       // mood = selectedMood;
-          //       // date = DateTime.now();
+          //       title = _title.text;
+          //       body = _description.text;
+          //       mood = selectedMood;
+          //       _imageString = _imageString;
+          //       date = DateTime.now();
 
           //       // MyPage page = MyPage(
           //       //   // pageID: pageID,
           //       //   title: title,
           //       //   description: body,
           //       //   mood: mood.toString(),
+          //       //   image: _imageString,
           //       //   createdAt: date,
           //       // );
           //     });
@@ -82,16 +84,16 @@ class _AddPageState extends State<AddPage> {
           //     await Navigator.push(context,
           //         MaterialPageRoute(builder: (context) => const MainTabView()));
           //   },
-          //   label: Text("Save Page"),
+          //   tooltip: 'Save Page',
           //   icon: Icon(Icons.save),
           // ),
-// new icon button
+// new icon button, does not redirect
           IconButton(
             onPressed: widget.page == null
                 ? _insertPage
                 : () {
                     _updatePage();
-                    Navigator.pushReplacement(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => MainTabView()),
                     );

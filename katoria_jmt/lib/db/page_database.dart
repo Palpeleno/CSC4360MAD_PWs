@@ -39,7 +39,7 @@ class PageRepository {
     );
   }
 
-  // function to fetch all pages from the database
+  // function to fetch/retun all pages from the database as list of pages 
   static Future<List<MyPage>> getPages() async {
     final db = await _database();
 

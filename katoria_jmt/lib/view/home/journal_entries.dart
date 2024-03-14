@@ -22,8 +22,6 @@ class JournalView extends StatefulWidget {
 class _JournalViewState extends State<JournalView> {
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -39,48 +37,74 @@ class _JournalViewState extends State<JournalView> {
         backgroundColor: Theme.of(context).colorScheme.onBackground,
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: FutureBuilder<List<MyPage>>(
-        future: PageRepository.getPages(),
-        builder: (context, pageData) {
-          switch (pageData.connectionState) {
-            case ConnectionState.waiting:
-              {
-                return Center(child: CircularProgressIndicator());
+// old body future builder
+      // body: FutureBuilder<List<MyPage>>(
+      //   future: PageRepository.getPages(),
+      //   builder: (context, pageData) {
+      //     switch (pageData.connectionState) {
+      //       case ConnectionState.waiting:
+      //         {
+      //           return Center(child: CircularProgressIndicator());
+      //         }
+      //       case ConnectionState.done:
+      //         {
+      //           // ignore: unrelated_type_equality_checks
+      //           if (pageData.data == null || pageData.data!.isEmpty) {
+      //             return Center(
+      //               child: Text(
+      //                   "You don't have any jounral pages yet, create one."),
+      //             );
+      //           } else {
+      //             return Padding(
+      //               padding: EdgeInsets.all(8.0),
+      //               child: ListView.builder(
+      //                 itemCount: pageData.data!.length,
+      //                 itemBuilder: (context, index) {
+      //                   MyPage page = pageData.data![index];
+      //                   return Card(
+      //                     child: ListTile(
+
+      //                       title: Text(page.title),
+      //                       subtitle: Text(page.description),
+      //                     ),
+      //                   );
+      //                 },
+      //               ),
+      //             );
+      //           }
+      //         }
+      //       default:
+      //         return Center(
+      //           child: Text(
+      //               "Unexpected connection state: ${pageData.connectionState}"),
+      //         );
+      //     }
+      //   },
+
+      //   // new F
+      // ),
+// new future builder
+      body: FutureBuilder(
+          future: PageRepository.getPages(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              if (snapshot.data == null || snapshot.data!.isEmpty) {
+                // check no data or is empty
+                return Center(
+                  child: Text("no pages: empty"),
+                );
               }
-            case ConnectionState.done:
-              {
-                // ignore: unrelated_type_equality_checks
-                if (pageData.data == null || pageData.data!.isEmpty) {
-                  return Center(
-                    child: Text(
-                        "You don't have any jounral pages yet, create one."),
-                  );
-                } else {
-                  return Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ListView.builder(
-                      itemCount: pageData.data!.length,
-                      itemBuilder: (context, index) {
-                        MyPage page = pageData.data![index];
-                        return Card(
-                          child: ListTile(
-                            title: Text(page.title),
-                            subtitle: Text(page.description),
-                          ),
-                        );
-                      },
-                    ),
-                  );
-                }
-              }
-            default:
-              return Center(
-                child: Text(
-                    "Unexpected connection state: ${pageData.connectionState}"),
+              return ListView(
+                padding: EdgeInsets.all(15),
+                children: [
+                  for (var page in snapshot.data!) ItemPage(page: page)
+                ],
               );
-          }
-        },
-      ),
+            } // if the connection state is false
+            return SizedBox();
+          }),
+// new future builder
+      // ,sizedBox(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(

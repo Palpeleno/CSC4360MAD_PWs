@@ -102,12 +102,12 @@ class ItemPage extends StatelessWidget {
                 )
               ],
             )),
-            SizedBox(height: 5),
+            SizedBox(width: 10),
 // area for user added image
             if (page.image.isNotEmpty)
               Image.memory(Uint8List.fromList(base64Decode(page.image)),
-                  width: 10, height: 10),
-            SizedBox(height: 10),
+                  width: 50, height: 50),
+            // SizedBox(height: 10),
           ],
         ),
       ),
