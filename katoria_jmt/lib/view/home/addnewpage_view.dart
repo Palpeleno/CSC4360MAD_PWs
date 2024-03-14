@@ -84,14 +84,14 @@ class _AddPageState extends State<AddPage> {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: Text('No'),
+                            child: Text('No', style: TextStyle(color: Theme.of(context).colorScheme.onSurface,),),
                           ),
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context);
                               _deltePage();
                             },
-                            child: Text('Yes'),
+                            child: Text('Yes', style: TextStyle(color: Theme.of(context).colorScheme.onSurface,),),
                           )
                         ],
                       ),

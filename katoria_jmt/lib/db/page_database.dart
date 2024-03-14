@@ -24,7 +24,7 @@ class PageRepository {
           createdAt TEXT
         )
       ''');
-    }, version: 1);
+    }, version: 3);
 
     return database;
   }
