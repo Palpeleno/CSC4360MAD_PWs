@@ -2,26 +2,68 @@
 
 PowerPoint Link: https://docs.google.com/presentation/d/1NPBtHZT-iEAZTI87p90THnAEHxfNYRhGzZjWVAwTrKU/edit?usp=sharing
 
-YouTube Link: 
+YouTube Link: https://youtu.be/vchUW-s6uSk
 
-INSTRUCTIONS:
+GitHub project REPO : https://github.com/Palpeleno/CSC4360MAD_PWs
 
--If you are a new user, you can create an account by tapping on the sign up button.
+Flutter KatoriaJMT 
+journal and mood tracker app
 
--If you are a returning user, you can log in by tapping on the log in button.
+Instructions on how to use journal and mood tracker app 
 
--After the authentication completes, you will be redirected to the Journal Pages where you will be able to see the previous entries.
+To launch our app tap on our flutter app opening you to the welcome page 
+- If Apk is stuck on flutter logo when luanching , 
+    -wipe existing app data
+     long tap the app icon that is on the device home screen, 
+     in the new diolog box select app info
+     navigate to stroage & cache 
+     select to clear storage/ cache
 
--To add a new entry, tap the button on the right corner.
+After opening app
+User
+Login in 
+or create an existing account 
+Proceed with user login credentials to log in to Katoria JMT app
 
--The "Add new page" screen will appear. Input an entry title, your mood, the content, and an image if applicable.
+Once user is logged In 
+Use navigation bar at bottom,
+to select different screen option
 
--Save your new entry by tapping the "save button".
+Navigate to settings 
+select colored square, to the right of ; 'Change Theme', to switch appearance of light and dark mood app theme
 
--Go back to the Journal Page and refresh the page to show your most updated entry.
 
--If you want to delete an entry, tap on the entry you want to delete, and tap the delete button. Go back to the Journal Page and refresh the page.
+Select journal navigation icon to navigate to journal entries
+Select the add page floating button at the bottom right of the device to create a new journal page 
 
--To change to Dark Mode or Light Mode, tap the "Change Theme" button in the Settings tab.
+On the add new journal page you will be able to make a journal page entry
+Journal page will allow users to modify 
+Title 
+Mood selection; 1-5 emoticons 
+Type out a description maximum 1000 chracters 
+Select to add an image 
 
--To log out, press the log out button and tap "Log out" in the confirmation screen. You will be redirected to the Log in Screen if you want to log back in.
+Once user is satisfied with page entry 
+Click save icon button at top right of journal page 
+Once tapped ,user can use the back navigation at the top left to go back to journal entries
+
+   Repeat/ add page as desired 
+  
+Once user has returned to journal entries 
+User can update the current view with the refresh button at the top right
+
+User can select created list view of pages to edit selected page
+
+User can return to journal navtigation or select to edit fields in page
+fields that can be manipulates is the title, description, mood selection, and image
+
+User can save the page at the top right using the save icon
+then they can use the arrow at the top left to navigate back to the Journal view
+
+User needs to tap the update icon at the top right to refresh the list view of pages on Journal page 
+
+User can utilize the bottom navigation bar to switch screens to settings, Journal view, and the logout button
+
+User can logout of the app using the logout button 
+
+End how to use our app 
