@@ -19,13 +19,14 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 
 void main() async {
+  // to initialize sql datbase for andriod
   WidgetsFlutterBinding.ensureInitialized();
 
   //
   //  dart run sqflite_common_ffi_web:setup
   // for remaking web db set up in terminal
 
-// Initialize database for non-web platforms
+// helper function to check device platform to initialize database
   /*if (!kIsWeb) {
     //   print('we are web db');
     sqfliteFfiInit();
@@ -42,6 +43,9 @@ void main() async {
     //     // Initialize FFI
     //   }
   } */
+  // initialize database for web
+  // sqfliteFfiInit();
+  // databaseFactory = databaseFactoryFfiWeb;
 
   // firebase auth
   await Firebase.initializeApp(
@@ -52,9 +56,6 @@ void main() async {
       projectId: "katoriajmt",
     ),
   );
- // initialize database
-  //sqfliteFfiInit();
-  //databaseFactory = databaseFactoryFfiWeb;
 
   runApp(
     ChangeNotifierProvider(
