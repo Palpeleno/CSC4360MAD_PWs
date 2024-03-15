@@ -2,7 +2,7 @@
 
 PowerPoint Link: https://docs.google.com/presentation/d/1NPBtHZT-iEAZTI87p90THnAEHxfNYRhGzZjWVAwTrKU/edit?usp=sharing
 
-YouTube Link: 
+YouTube Link: https://www.youtube.com/watch?v=vchUW-s6uSk&feature=youtu.be
 
 GitHub project REPO : https://github.com/Palpeleno/CSC4360MAD_PWs
 
