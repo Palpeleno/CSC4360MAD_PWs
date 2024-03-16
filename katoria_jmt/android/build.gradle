@@ -1,5 +1,9 @@
 buildscript {
+<<<<<<< HEAD
     ext.kotlin_version = '1.7.10'
+=======
+    ext.kotlin_version = '1.9.22'
+>>>>>>> proj_merger
     repositories {
         google()
         mavenCentral()
@@ -7,6 +11,11 @@ buildscript {
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+<<<<<<< HEAD
+=======
+        classpath 'com.google.gms:google-services:4.4.1'
+        classpath 'com.android.tools.build:gradle:7.3.1'
+>>>>>>> proj_merger
     }
 }
 
@@ -27,4 +36,8 @@ subprojects {
 
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> proj_merger

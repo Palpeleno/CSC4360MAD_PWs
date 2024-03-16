@@ -1,10 +1,18 @@
 # Project-level configuration.
 cmake_minimum_required(VERSION 3.14)
+<<<<<<< HEAD
 project(katoria_jmt LANGUAGES CXX)
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
 set(BINARY_NAME "katoria_jmt")
+=======
+project(pw1 LANGUAGES CXX)
+
+# The name of the executable created for the application. Change this to change
+# the on-disk name of your application.
+set(BINARY_NAME "pw1")
+>>>>>>> proj_merger
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.

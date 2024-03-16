@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "name": "katoria_jmt",
     "short_name": "katoria_jmt",
+=======
+    "name": "pw1",
+    "short_name": "pw1",
+>>>>>>> proj_merger
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

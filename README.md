@@ -2,7 +2,11 @@
 
 PowerPoint Link: https://docs.google.com/presentation/d/1NPBtHZT-iEAZTI87p90THnAEHxfNYRhGzZjWVAwTrKU/edit?usp=sharing
 
+<<<<<<< HEAD
 YouTube Link: https://youtu.be/vchUW-s6uSk
+=======
+YouTube Link: https://www.youtube.com/watch?v=vchUW-s6uSk&feature=youtu.be
+>>>>>>> proj_merger
 
 GitHub project REPO : https://github.com/Palpeleno/CSC4360MAD_PWs
 

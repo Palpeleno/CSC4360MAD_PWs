@@ -3,6 +3,10 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+<<<<<<< HEAD
+=======
+  file_selector_linux
+>>>>>>> proj_merger
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
