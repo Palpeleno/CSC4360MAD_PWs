@@ -12,7 +12,7 @@ journal and mood tracker app
 Instructions on how to use journal and mood tracker app 
 
 To launch our app tap on our flutter app opening you to the welcome page 
-- If Apk is stuck on flutter logo when luanching , 
+- If Apk is stuck on flutter logo when launching , 
     -wipe existing app data
      long tap the app icon that is on the device home screen, 
      in the new diolog box select app info
@@ -21,16 +21,16 @@ To launch our app tap on our flutter app opening you to the welcome page
 
 After opening app
 User
-Login in 
+Log in 
 or create an existing account 
 Proceed with user login credentials to log in to Katoria JMT app
 
-Once user is logged In 
+Once user is logged in 
 Use navigation bar at bottom,
 to select different screen option
 
 Navigate to settings 
-select colored square, to the right of ; 'Change Theme', to switch appearance of light and dark mood app theme
+select colored square, to the right of; 'Change Theme', to switch appearance of light and dark mood app theme
 
 
 Select journal navigation icon to navigate to journal entries
