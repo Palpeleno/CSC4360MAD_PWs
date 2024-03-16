@@ -16,10 +16,10 @@ journal and mood tracker app
 Instructions on how to use journal and mood tracker app 
 
 To launch our app tap on our flutter app opening you to the welcome page 
-- If Apk is stuck on flutter logo when luanching , 
+- If Apk is stuck on flutter logo when launching, 
     -wipe existing app data
      long tap the app icon that is on the device home screen, 
-     in the new diolog box select app info
+     in the new dialog box select app info
      navigate to stroage & cache 
      select to clear storage/ cache
 
